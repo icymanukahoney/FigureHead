@@ -1,0 +1,14 @@
+// Local Imports
+@import "./modules/variables";
+@import "./modules/responsive/mobile";
+@import "./modules/responsive/tablet";
+@import "./modules/responsive/desktop";
+
+// Resets
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
