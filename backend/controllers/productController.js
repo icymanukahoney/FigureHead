@@ -22,8 +22,27 @@ const createProduct = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 }
+
+// DELETE a Product
+const deleteProduct = async (req, res) => {
+    const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such Product'})
+    }
+
+    const product = await Product.findOneAndDelete({_id: id})
+
+    if(!product) {
+        return res.status(404).json({error: 'No such product'})
+    }
+    res.status(200).json(product)
+}
+
 //export the functions
 module.exports = {
     getProducts,
-    createProduct
+    createProduct,
+    deleteProduct
+
 }
