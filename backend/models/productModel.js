@@ -2,13 +2,10 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const workoutSchema = new Schema({
+const productSchema = new Schema({
     //define the rules for the data
     //key : dataType, required: true - only add required if you want to enforce the value
-    _id: {
-        type: ObjectID,
-        required: true
-    },
+    
     author: {
         type:String,
         required: true
@@ -21,29 +18,21 @@ const workoutSchema = new Schema({
         type: String
     },
     price: {
-        type:Int32,
-        required: true
-    },
-    date: {
-        type: Date,
+        type:Number,
         required: true
     },
     categories: [{
-        category: {
-            type: String,
-            required: true
-        }
-    }],
-    comments: [{
-        comment: {
-            type: ObjectId, 
-            required: true
-        }
-    }], 
-    image: {
-        type: String,
+        type: String, 
         required: true
-    }
+    }],
+    //comments: [{
+        //type: Schema.Types.ObjectId,
+        //ref: 'Comment' 
+    //}],
+    //image: {
+       // type: String,
+        //required: true
+   // }
 
-})
+}, {timestamps: true})
 module.exports = mongoose.model('Product', productSchema)
