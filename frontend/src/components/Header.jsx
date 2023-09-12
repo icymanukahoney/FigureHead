@@ -13,7 +13,7 @@ const Header = () => {
           <img src="#" alt="#" />
         </Link>
         <h1>FigureHead</h1>
-        <i class="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-bars"></i>
 
       </div>
       <div className="nav-flex" id="nav-bottom"></div>

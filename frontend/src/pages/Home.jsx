@@ -1,7 +1,7 @@
 // imports
-import { useState, useEffect } from "react";
-import axios from "axios";
-import link from "react-router-dom";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
+// import link from "react-router-dom";
 
 // import context
 
@@ -55,7 +55,7 @@ const Home = () => {
       {/* product grid section */}
       <div className="product-grid ">
         <div className="product-item">
-          <h3>{product.title}</h3>
+          <h3>Title:</h3>
           <p>Category:</p>
           <p>Price:</p>
         </div>
