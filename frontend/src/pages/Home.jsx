@@ -9,8 +9,26 @@ import link from "react-router-dom";
 
 const Home = () => {
   // Define state variables
+  // const [products, setProducts] = useState([]);
+  // const [selectCategory, setSelectedCategory] = useState("");
+  // const [filteredProducts, setFilteredProducts] = useState([]);
 
   // Fetch product data from api call
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:4000/api/products");
+  //       const product = response.data;
+
+  //       // update the products state with the products data
+  //       setProducts(product);
+  //     } catch (error){ console.error("Error fetching product data:", error);
+
+  //     }
+  //   };
+  //   fetchProducts();
+  // }, []);
+
   // Make an API request to fetch product data
   // Update the products state with fetched data
 
@@ -46,7 +64,6 @@ const Home = () => {
           <option value="comic">Comic</option>
           <option value="plushie">Plushie</option>
           <option value="other">Other</option>
-          {/* Add more category options */}
         </select>
       </div>
 
@@ -55,7 +72,7 @@ const Home = () => {
       {/* product grid section */}
       <div className="product-grid ">
         <div className="product-item">
-          <h3>{product.title}</h3>
+          <h3>Title</h3>
           <p>Category:</p>
           <p>Price:</p>
         </div>
