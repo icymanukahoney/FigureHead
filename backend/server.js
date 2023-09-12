@@ -3,8 +3,19 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
-const port = 4000
+const port = 4000;
 
+
+app.use(express.json())
+
+// import routes
+const productRoutes = require('./routes/products')
+
+//log out path and method of each request
+app.use((req, res, next) => {
+    console.log(req.path, req.method);
+    next()
+  })
 //Bring in username and password from the .env file 
 const mongoUsername = process.env.MONGODB_USERNAME
 const mongoPassword = process.env.MONGODB_PASSWORD
@@ -12,28 +23,25 @@ const mongoPassword = process.env.MONGODB_PASSWORD
 //Mongo connection string 
 const mongoURI = `mongodb+srv://${mongoUsername}:${mongoPassword}@cluster0.s0fu6kb.mongodb.net/?retryWrites=true&w=majority`
 
-
 //Setups route for browser - defines what will be shown in the browser
 app.get('/', (req, res) =>{
     res.send('Hello, this is your Express Server!') // see in the browser
 })
 
-// Setup the server to listen to the port - logs out to terminal that is listening when it starts for the first time
-// Because of nodemon and it restarting each time we make a change it should log this out again 
-app.listen(port, () => {
- console.log(`Express backend server is running on localhost:${port}`); // sent to the terminal
-});
+// Attach our Route to our app (express)
+app.use('/api/products', productRoutes)
 
 // Connect to Mongo use Mongoose
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-    // Success
-    .then(() =>{
-        console.log('Connected to MongoDB Atlas');
-    })
-    // Fail / Error
-    .catch((err) =>{
-        console.error('Error connecting to MongoDB:', err)
-    })
+.then(() => {
+    // Start the server
+    app.listen(port, () => {
+      console.log(`DB Connected & Express server is running on http://localhost:${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  });
