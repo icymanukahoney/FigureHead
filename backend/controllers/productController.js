@@ -3,13 +3,30 @@ const Product = require('../models/productModel')
 //import mongoose
 const mongoose = require('mongoose')
 
-// Get all products
+// Get ALL products
 const getProducts = async (req, res) => {
     // -1 in sort will put them in descending order (latest first)
     const products = await Product.find({}).sort({createdAt: -1})
     res.status(200).json(products)
 }
-// Create a New product
+
+// get SINGLE product
+const getProduct = async (req, res ) => {
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such Product'})
+    }
+
+    const product = await Product.findById(id)
+
+    if(!product) {
+        return res.status(404).json({error: 'No such product'})
+    }
+    res.status(200).json(product)
+}
+
+// Create a NEW Product
 const createProduct = async (req, res) => {
     const {author, title, desc, price, categories} = req.body
 
@@ -42,6 +59,7 @@ const deleteProduct = async (req, res) => {
 //export the functions
 module.exports = {
     getProducts,
+    getProduct,
     createProduct,
     deleteProduct
 
