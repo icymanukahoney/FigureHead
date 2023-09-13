@@ -4,7 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 // allow cross origin requests 
-//const cors = require('cors')
+const cors = require('cors')
 
 const port = 4000;
 
@@ -12,10 +12,12 @@ const port = 4000;
 app.use(express.json())
 
 // Call on express to use CORS
-//app.use(cors())
+app.use(cors())
 
 // import routes
 const productRoutes = require('./routes/products')
+const userRoutes = require('./routes/user')
+
 
 //log out path and method of each request
 app.use((req, res, next) => {
@@ -36,6 +38,7 @@ app.get('/', (req, res) =>{
 
 // Attach our Route to our app (express)
 app.use('/api/products', productRoutes)
+app.use('/api/user', userRoutes)
 
 // Connect to Mongo use Mongoose
 mongoose.connect(mongoURI, {
