@@ -14,15 +14,15 @@ const Footer = () => {
           
           {/* This is for the SafeCard text and logo */}
           <div className="footer-flex">
-            <i class="fa-solid fa-shield-halved"></i>
+            <i className="fa-solid fa-shield-halved"></i>
             <p>SafeCard</p>
           </div>
 
           {/* This is for the socials  */}
           <div className="footer-flex">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-x-twitter"></i>
+            <i className="fa-brands fa-facebook"></i>
+            <i className="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-x-twitter"></i>
           </div>
 
           {/* This is for the Collect & Connect */}
