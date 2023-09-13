@@ -3,10 +3,16 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+// allow cross origin requests 
+//const cors = require('cors')
+
 const port = 4000;
 
 
 app.use(express.json())
+
+// Call on express to use CORS
+//app.use(cors())
 
 // import routes
 const productRoutes = require('./routes/products')

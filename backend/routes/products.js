@@ -7,8 +7,8 @@ const {
     getProducts,
     getProduct,
     createProduct,
-    deleteProduct
-    //updateProduct
+    deleteProduct,
+    updateProduct
 } = require('../controllers/productController')
 
 //setup a route for each required route 
@@ -26,7 +26,7 @@ router.post('/', createProduct)
 router.delete('/:id', deleteProduct)
 
 // UPDATE all products
-//router.patch('/:id', updateProduct)
+router.patch('/:id', updateProduct)
 
 // export the module
 module.exports = router

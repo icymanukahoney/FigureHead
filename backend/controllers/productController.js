@@ -55,12 +55,30 @@ const deleteProduct = async (req, res) => {
     }
     res.status(200).json(product)
 }
+// update a product
+const updateProduct = async (req,res) => {
+    const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such Product'})
+    }
+
+    const product = await Product.findOneAndUpdate({_id: id}, {
+        ...req.body        
+    },
+    { new: true }) // new true make sures its returning the new update
+
+    if(!product) {
+        return res.status(404).json({error: 'No such product'})
+    }
+    res.status(200).json(product)
+}
 
 //export the functions
 module.exports = {
     getProducts,
     getProduct,
     createProduct,
-    deleteProduct
-
+    deleteProduct,
+    updateProduct
 }
