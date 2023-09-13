@@ -10,8 +10,19 @@ body {
     text-align: center;
 }
 
-p {
+p, a {
     font-size: $mobile-medium-size;
+}
+a {
+    color: $main-gold!important;
+}
+
+.bg-image {
+    background-image: url('/img/bg-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    margin-bottom: -150px;
 }
 
 // Header
@@ -22,14 +33,6 @@ p {
 
 // Profile Page
 #profile-page {
-    .bg-image {
-        background-image: url('/img/bg-image.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 300px;
-        margin-bottom: -150px;
-    }
-
     .profile {
         padding: 10px;
 
@@ -106,5 +109,125 @@ p {
 }
 
 // SingleProduct Page
+#product-page {
+
+    #product {
+        position: relative;
+        margin-top: 200px;
+        padding: 20px;
+
+        display: grid;
+        grid-template-columns: 80% 20%;
+        grid-template-areas: 'h2 h2' 'details aside' 'description description';
+        row-gap: 15px;
+
+        .product-img {
+            position: absolute;
+            top: -215px;
+            left: calc(50% - 62.5px);
+            z-index: 1;
+            
+            padding: 5px;
+            background: $main-gold;
+            border-radius: 20px;
+            
+            height: 200px;
+            width: 125px;
+            object-fit: cover;
+
+            &.main-img {z-index: 2;}
+
+            &.second-img {
+                left: calc(20% - 50px);
+                transform: rotate(-11.25deg);
+                height: 175px;
+                width: 111.25px;
+            }
+
+            &.third-img {
+                left: calc(77% - 50px);
+                transform: rotate(11.25deg);
+                height: 175px;
+                width: 111.25px;
+            }
+        }
+
+        h2 {
+            grid-area: h2;
+        }
+        .product-details {
+            grid-area: details;
+            text-align: left;
+        }
+        .product-aside {
+            grid-area: aside;
+        }
+        .product-description {
+            grid-area: description;
+        }
+    }
+
+    #comment-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        padding: 5px;
+
+        .comment {
+            display: grid;
+            grid-template-columns: 100px calc(100% - 100px);
+            grid-template-rows: auto;
+            width: 80%;
+
+            background-color: $main-blue;
+            border-radius: 15px;
+
+            .comment-author {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 20px 10px;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                }
+            }
+            .comment-content {
+                text-align: left;
+                padding: 10px;
+                padding-left: 0;
+            }
+        }
+    }
+}
 
 // Payment Page
+
+@media screen and (min-width: 540px) {
+// General
+
+// Header
+
+// Footer
+
+// Home Page
+
+// Profile Page
+
+// SingleProduct Page
+
+// Payment Page
+
+#profile-page {
+
+    #profile-listings {
+        display: flex;
+        justify-content: center;
+        gap: 15px 30px;
+    }
+}
+}

@@ -11,17 +11,22 @@ body {
   text-align: center;
 }
 
-p {
+p, a {
   font-size: 12px;
 }
 
-#profile-page .bg-image {
+a {
+  color: #F1D7A7 !important;
+}
+
+.bg-image {
   background-image: url("/img/bg-image.jpg");
   background-size: cover;
   background-position: center;
   height: 300px;
   margin-bottom: -150px;
 }
+
 #profile-page .profile {
   padding: 10px;
 }
@@ -92,6 +97,149 @@ p {
   margin-top: 10px;
 }
 
+#product-page #product {
+  position: relative;
+  margin-top: 200px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-areas: "h2 h2" "details aside" "description description";
+  row-gap: 15px;
+}
+#product-page #product .product-img {
+  position: absolute;
+  top: -215px;
+  left: calc(50% - 62.5px);
+  z-index: 1;
+  padding: 5px;
+  background: #F1D7A7;
+  border-radius: 20px;
+  height: 200px;
+  width: 125px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#product-page #product .product-img.main-img {
+  z-index: 2;
+}
+#product-page #product .product-img.second-img {
+  left: calc(20% - 50px);
+  transform: rotate(-11.25deg);
+  height: 175px;
+  width: 111.25px;
+}
+#product-page #product .product-img.third-img {
+  left: calc(77% - 50px);
+  transform: rotate(11.25deg);
+  height: 175px;
+  width: 111.25px;
+}
+#product-page #product h2 {
+  grid-area: h2;
+}
+#product-page #product .product-details {
+  grid-area: details;
+  text-align: left;
+}
+#product-page #product .product-aside {
+  grid-area: aside;
+}
+#product-page #product .product-description {
+  grid-area: description;
+}
+#product-page #comment-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 5px;
+}
+#product-page #comment-flex .comment {
+  display: grid;
+  grid-template-columns: 100px calc(100% - 100px);
+  grid-template-rows: auto;
+  width: 80%;
+  background-color: #25303A;
+  border-radius: 15px;
+}
+#product-page #comment-flex .comment .comment-author {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 10px;
+}
+#product-page #comment-flex .comment .comment-author img {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#product-page #comment-flex .comment .comment-content {
+  text-align: left;
+  padding: 10px;
+  padding-left: 0;
+}
+
+@media screen and (min-width: 540px) {
+  #profile-page #profile-listings {
+    display: flex;
+    justify-content: center;
+    gap: 15px 30px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #profile-page .profile {
+    padding: 20px 30px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  p {
+    font-size: 20px;
+  }
+  #profile-page .profile {
+    padding: 30px 40px;
+  }
+  #profile-page #profile-listings {
+    padding: 15px 15px 20px;
+  }
+  #profile-page #profile-listings .profile-card {
+    min-height: 350px;
+    width: 250px;
+  }
+  #profile-page #profile-listings .profile-card .listing-title {
+    font-size: 28px;
+  }
+  #profile-page #profile-listings .profile-card .profile-listing-edit-delete {
+    font-size: 24px;
+    position: absolute;
+    bottom: 5px;
+    right: -5px;
+  }
+  #profile-page #profile-listings .profile-card .profile-listing-edit-delete * {
+    margin-right: 15px;
+  }
+  #profile-page #profile-listings #add-listing {
+    font-size: 24px;
+  }
+  #profile-page #profile-listings #add-listing #add-icon {
+    font-size: 40px;
+    margin-top: 10px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  #profile-page #profile-listings .profile-card {
+    min-height: 440px;
+    width: 330px;
+  }
+  #profile-page #profile-listings .profile-card .listing-image {
+    padding: 10px;
+  }
+  #profile-page #profile-listings .profile-card .listing-image img {
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
 * {
   margin: 0;
   padding: 0;
