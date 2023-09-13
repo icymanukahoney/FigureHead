@@ -1,11 +1,39 @@
-import React from 'react'
+import React from "react";
+
+// DONT FORGET TO IMPORT FOOTER IN APP.JSX
 
 const Footer = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <footer>
 
-export default Footer
+        {/* This is the div that will have the grid */}
+        <div id="footer-grid">
+
+          {/* This is where the items are flexed inside the grid */}
+          
+          {/* This is for the SafeCard text and logo */}
+          <div className="footer-flex">
+            <i class="fa-solid fa-shield-halved"></i>
+            <p>SafeCard</p>
+          </div>
+
+          {/* This is for the socials  */}
+          <div className="footer-flex">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+          </div>
+
+          {/* This is for the Collect & Connect */}
+          <div className="footer-flex">
+            <p>Collect & Connect</p>
+          </div>
+        </div>
+
+      </footer>
+    </>
+  );
+};
+
+export default Footer;
