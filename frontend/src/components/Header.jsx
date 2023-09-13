@@ -6,6 +6,15 @@ import { useState } from "react";
 
 const Header = () => {
 
+  // This is setting up the state to track if the menu is open or not
+  // This line sets the default state of the nav bottom to be false so it will not show by default
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // This is setting the state for the nav bottom to true if the hamburger is clicked
+  const handleClick = () => {
+    const [setIsMenuOpen] = useState(true);
+  };
+
   return (
     <nav>
       <div className="nav-flex" id="nav-top">
@@ -13,15 +22,16 @@ const Header = () => {
           <img src="/img/logo.png" alt="FigureHeads Logo"/> {/* This is the Logo */}
         </Link>
         <h1>FigureHead</h1>
-        <i className="fa-solid fa-bars"></i> {/* This is the Hamburger Menu */}
+        <i className="fa-solid fa-bars" onClick={handleClick}></i> {/* This is the Hamburger Menu */}
 
+      {/* first conditional (container if statement that will hold two more conditionals / if statements that have the two display stats based on if a user is signed in or not) */}
       </div>
       <div className="nav-flex" id="nav-bottom">
         <div>
 
           {/* This will be where our @media query chooses to display our login and sign up */}
 
-          {/* Here is placeholder links for the login and sign up for when we need it - it will be commented out till used 
+          {/* Here is placeholder links for the login and sign up for when we need it - it will be commented out till used - Below will be where the funky if statement goes
 
           {/* <Link to="/Login" className="login-btn">
             Login
