@@ -10,12 +10,63 @@ const Profile = () => {
         <h2>Your products:</h2>
         <div id="profile-listings">
           <div className="profile-card">
-            <div>
-              <img src="#" alt="Image of the figurine" />
+            <div className="listing-image">
+              <img src="/img/logo.png" alt="Logo test to make sure images work" />
             </div>
             <div>
               <p className="listing-title">
-                Dungeons & Dragons: Gelatinous Cube POP! Vinyl
+                Logo Test
+              </p>
+              <p className="listing-category">Category, Category</p>
+              <p className="listing-price">$50.00</p>
+
+              <div className="profile-listing-edit-delete">
+                <i className="fa fa-pen-to-square"></i>
+                <i className="fa fa-trash"></i>
+              </div>
+            </div>
+          </div>
+          <div className="profile-card">
+            <div className="listing-image">
+              <img src="/img/logo.png" alt="Logo test to make sure images work" />
+            </div>
+            <div>
+              <p className="listing-title">
+                Logo Test
+              </p>
+              <p className="listing-category">Category, Category</p>
+              <p className="listing-price">$50.00</p>
+
+              <div className="profile-listing-edit-delete">
+                <i className="fa fa-pen-to-square"></i>
+                <i className="fa fa-trash"></i>
+              </div>
+            </div>
+          </div>
+          <div className="profile-card">
+            <div className="listing-image">
+              <img src="/img/logo.png" alt="Logo test to make sure images work" />
+            </div>
+            <div>
+              <p className="listing-title">
+                Logo Test
+              </p>
+              <p className="listing-category">Category, Category</p>
+              <p className="listing-price">$50.00</p>
+
+              <div className="profile-listing-edit-delete">
+                <i className="fa fa-pen-to-square"></i>
+                <i className="fa fa-trash"></i>
+              </div>
+            </div>
+          </div>
+          <div className="profile-card">
+            <div className="listing-image">
+              <img src="/img/logo.png" alt="Logo test to make sure images work" />
+            </div>
+            <div>
+              <p className="listing-title">
+                Logo Test
               </p>
               <p className="listing-category">Category, Category</p>
               <p className="listing-price">$50.00</p>
