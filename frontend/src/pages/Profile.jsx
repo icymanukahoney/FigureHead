@@ -4,10 +4,10 @@ const Profile = () => {
   return (
     <div id="profile-page">
       <div className='bg-image'></div>
-      <div>
-        <img src="#" alt="Background image of a figurine collection wall." />
+      <div className='profile'>
+        <img className='profile-img' src="/img/logo.png" alt="Profile Picture test." />
         <h1>ACCOUNT NAME</h1>
-        <h2>Listings</h2>
+        <h2>Your products:</h2>
         <div id="profile-listings">
           <div className="profile-card">
             <div>
@@ -15,7 +15,7 @@ const Profile = () => {
             </div>
             <div>
               <p className="listing-title">
-                Dunegons & Dragons: Gelatinous Cube POP! Vinyl
+                Dungeons & Dragons: Gelatinous Cube POP! Vinyl
               </p>
               <p className="listing-category">Category, Category</p>
               <p className="listing-price">$50.00</p>
@@ -27,12 +27,12 @@ const Profile = () => {
             </div>
           </div>
           <div className="profile-card">
-            <div>
-              <img src="#" alt="Image of the figurine" />
+            <div className="listing-image">
+              <img src="/img/logo.png" alt="Logo test to make sure images work" />
             </div>
             <div>
               <p className="listing-title">
-                Dunegons & Dragons: Gelatinous Cube POP! Vinyl
+                Logo Test
               </p>
               <p className="listing-category">Category, Category</p>
               <p className="listing-price">$50.00</p>
@@ -46,7 +46,7 @@ const Profile = () => {
           <div id="add-listing" className="profile-card">
             <div>
               <h3>Create New Listing</h3>
-              <i className="fa fa-circle-plus"></i>
+              <i id="add-icon" className="fa fa-circle-plus"></i>
             </div>
           </div>
         </div>

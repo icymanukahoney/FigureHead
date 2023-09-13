@@ -11,8 +11,31 @@ body {
   text-align: center;
 }
 
-#profile-page {
+p {
+  font-size: 12px;
+}
+
+#profile-page .bg-image {
+  background-image: url("/img/bg-image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  margin-bottom: -150px;
+}
+#profile-page .profile {
   padding: 10px;
+}
+#profile-page .profile .profile-img {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#profile-page .profile h1, #profile-page .profile h2 {
+  padding: 10px;
+}
+#profile-page .profile h2 {
+  padding-bottom: 20px;
 }
 #profile-page #profile-listings {
   display: flex;
@@ -26,12 +49,47 @@ body {
   min-height: 230px;
   width: 150px;
   border: 4px solid #F1D7A7;
-  background-image: #25303A;
+  background-color: #25303A;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  text-align: left;
+  padding: 5px 5px 10px;
+}
+#profile-page #profile-listings .profile-card .listing-image {
+  text-align: center;
+  overflow: hidden;
+}
+#profile-page #profile-listings .profile-card .listing-image img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#profile-page #profile-listings .profile-card .listing-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+#profile-page #profile-listings .profile-card .profile-listing-edit-delete {
+  font-size: 14px;
+  position: absolute;
+  bottom: 5px;
+  right: -5px;
+}
+#profile-page #profile-listings .profile-card .profile-listing-edit-delete * {
+  margin-right: 10px;
 }
 #profile-page #profile-listings #add-listing {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+#profile-page #profile-listings #add-listing #add-icon {
+  font-size: 28px;
+  margin-top: 10px;
 }
 
 * {
