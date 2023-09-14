@@ -7,6 +7,10 @@ import axios from "axios";
 
 // import components
 
+// import images
+import backgroundMobile from "/img/backgroundMobile.jpg";
+import LogoText from "/img/LogoText.png";
+
 const Home = () => {
   // Define state variables
   // const [products, setProducts] = useState([]);
@@ -29,6 +33,16 @@ const Home = () => {
   //   fetchProducts();
   // }, []);
 
+  // // Handle category selection for buttons on desktop only
+  // const handleCategoryClick = (category) => {
+  //   // If the clicked category is the same as the selected one, reset it
+  //   if (category === selectedCategory) {
+  //     setSelectedCategory("");
+  //   } else {
+  //     setSelectedCategory(category);
+  //   }
+  // };
+
   // Filter products based on the selected category
   // useEffect(() => {
   //   if (!selectedCategory) {
@@ -43,14 +57,20 @@ const Home = () => {
   //   }
   // }, [selectedCategory, products]);
 
+  // THIS FILTERED PRODUCTS IS FOR THE DESKTOP BUTTONS
+  // const filteredProducts = selectedCategory
+  //   ? products.filter((product) => product.category === selectedCategory)
+  //   : products;
+
   return (
     <>
       {/* background image - whats new advert - weekly deal advert */}
+      {/* background will be position absolute top 0 an left 0 */}
       <div className="background-mobile">
-        <img src="#" alt="background-coins-mobile" />
+        <img src={backgroundMobile} alt="background-coins-mobile" />
       </div>
       <div className="logo-hero-mobile">
-        <img src="#" alt="hero-logo-withText" />
+        <img src={LogoText} alt="hero-logo-withText" />
       </div>
 
       {/* give whats-new-title width of 70% keep left aligned and use padding to create background color.  */}
@@ -95,6 +115,87 @@ const Home = () => {
         </select>
       </div>
 
+      {/* START OF BUTTON CATEGORIES FOR DESKTOP!!! */}
+      {/* Display category buttons when screen width is above 500px */}
+      {window.innerWidth > 500 && (
+        <>
+          <h3>CATEGORIES</h3>
+          <div className="category-buttons-grid">
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "game" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("game")}
+              >
+                Game
+              </button>
+            </div>
+
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "movie" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("movie")}
+              >
+                Movie
+              </button>
+            </div>
+
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "tv show" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("tv show")}
+              >
+                Tv Show
+              </button>
+            </div>
+
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "anime" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("anime")}
+              >
+                Anime
+              </button>
+            </div>
+
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "cartoon" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("cartoon")}
+              >
+                Cartoon
+              </button>
+            </div>
+
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "comic" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("comic")}
+              >
+                Comic
+              </button>
+            </div>
+
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "plushie" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("plushie")}
+              >
+                Plushie
+              </button>
+            </div>
+
+            <div className="button-item">
+              <button
+              // className={selectedCategory === "other" ? "selected" : ""}
+              // onClick={() => handleCategoryClick("other")}
+              >
+                Other
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+
       <p>SHOWING: 3 of 3</p>
       {/* <p>SHOWING: {filteredProducts.length} of {products.length}</p> */}
 
@@ -107,7 +208,8 @@ const Home = () => {
           <h3>Title</h3>
           <p>Category:</p>
           <p>Price:</p>
-          <img src="#" alt="heart icon from font awesome" />
+          <i className="fa-regular fa-heart"></i>
+          {/* <i class="fa-solid fa-heart"></i> */}
           {/* </Link> */}
         </div>
       </div>
@@ -115,7 +217,7 @@ const Home = () => {
   );
 };
 
-// POSSIBLE CODE SET UP FOR CATEGORY FILTER RENDER
+//CODE SET UP FOR CATEGORY FILTER RENDER WHEN API CALL IS
 
 {
   /* <div className="product-grid">
