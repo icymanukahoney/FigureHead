@@ -1,6 +1,23 @@
-import React from 'react'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AddProduct from "../components/AddProduct";
+import EditProduct from "../components/EditProduct";
 
 const Profile = () => {
+
+  // const navigate = useNavigate();
+
+  // const routeChange = () => {
+  //   let path = `/${product._id}`;
+  //   navigate(path)
+  // }
+
+  const [isAddOpen, setIsAddOpen] = useState(false)
+  const handleAddSubmit = () => {setIsAddOpen(false)}
+
+  const [isEditOpen, setIsEditOpen] = useState(false)
+  const handleEditSubmit = () => {setIsEditOpen(false)}
+
   return (
     <div id="profile-page">
       <div className='bg-image'></div>
@@ -21,7 +38,9 @@ const Profile = () => {
               <p className="listing-price">$50.00</p>
 
               <div className="profile-listing-edit-delete">
-                <i className="fa fa-pen-to-square"></i>
+                <i className="fa fa-pen-to-square" onClick={() => {
+                  setIsEditOpen(true)
+                }}></i>
                 <i className="fa fa-trash"></i>
               </div>
             </div>
@@ -94,7 +113,9 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div id="add-listing" className="profile-card">
+          <div id="add-listing" className="profile-card" onClick={() => {
+            setIsAddOpen(true)
+          }}>
             <div>
               <h3>Create New Listing</h3>
               <i id="add-icon" className="fa fa-circle-plus"></i>
@@ -102,6 +123,8 @@ const Profile = () => {
           </div>
         </div>
       </div>
+        {isAddOpen && <AddProduct onFormSubmit={handleAddSubmit} />}
+        {isEditOpen && <EditProduct onFormSubmit={handleEditSubmit} />}
     </div>
   )
 }
