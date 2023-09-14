@@ -23,37 +23,39 @@ const Header = () => {
         </Link>
         <h1>FigureHead</h1>
         <i className="fa-solid fa-bars" onClick={handleClick}></i> {/* This is the Hamburger Menu */}
-
-      {/* first conditional (container if statement that will hold two more conditionals / if statements that have the two display stats based on if a user is signed in or not) */}
       </div>
-      <div className="nav-flex" id="nav-bottom">
-        <div>
 
-          {/* This will be where our @media query chooses to display our login and sign up */}
+      
+      {isMenuOpen && ( // this checks to see if the menu is open
+        <div className="nav-flex" id="nav-bottom">
 
-          {/* Here is placeholder links for the login and sign up for when we need it - it will be commented out till used - Below will be where the funky if statement goes
+          {isLoggedIn ? ( // this checks if the user is logged in
+          // If isLoggedIn is true, it renders content for the case when the user is logged in
+            <>
+              <Link to="/Profile" className="profile-btn">
+                <i className="fa-solid fa-circle-user"></i> {/* This is the Profile Icon */}
+                User's Name Here {/* Here is placeholder user name */}
+              </Link>
+        
+              <Link to="/Logout" className="logout-btn">
+                Logout
+              </Link>              
+            </>
+          ) : (
+          // If isLoggedIn is false, it renders content for the case when the user is not logged in
+            <>
+              <Link to="/Login" className="login-btn">
+                Login
+              </Link>
 
-          {/* <Link to="/Login" className="login-btn">
-            Login
-          </Link>
-          <Link to="/Signup" className="signup-btn">
-            Signup
-          </Link> */}
-
-          {/* This will be where our @media query chooses to display our users name and logout */}
-
-          {/* Here is placeholder links for the users name and logout for when we need it - it will be commented out till used */}
-          
-          {/* <Link to="/Profile" className="profile-btn">
-            <i className="fa-solid fa-circle-user"></i> leave a comment here saying "This is the Profile Icon"
-            "Users Name Here
-          </Link>
-          <Link to="/Logout" className="logout-btn">
-            Logout
-          </Link> */}
-
+              <Link to="/Signup" className="signup-btn">
+                Signup
+              </Link>
+            </>
+          )}
         </div>
-      </div>
+      )}
+
     </nav>
   );
 };
