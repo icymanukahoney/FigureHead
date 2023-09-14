@@ -35,7 +35,8 @@ const AddProduct = (props) => {
     e.preventDefault()
 
     const user = JSON.parse(localStorage.getItem("user"))
-    const user_id = user.email
+    // const user_id = user.email
+    const user_id = "ryan@test"
 
     setImage1(images[0])
     if (images[1]) {setImage2(images[1])}
@@ -63,6 +64,10 @@ const AddProduct = (props) => {
       setPrice("")
       setImages(null)
       setSelectedCategories([])
+      console.log("New Product Posted!", response.data);
+
+      dispatch({type:"CREATE_PRODUCTS", payload: response.data})
+
     } catch (error) {
       console.error(error)
       setError(error.message)
@@ -127,6 +132,7 @@ const AddProduct = (props) => {
             <div>
               <button>SUBMIT</button>
             </div>
+            {error && <div className="error">{error}</div>}
           </div>
         </div>
       </form>

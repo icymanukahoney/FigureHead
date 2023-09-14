@@ -5,12 +5,12 @@ import EditProduct from "../components/EditProduct";
 
 const Profile = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const routeChange = () => {
-  //   let path = `/${product._id}`;
-  //   navigate(path)
-  // }
+  const routeChange = () => {
+    let path = `/${product._id}`;
+    navigate(path)
+  }
 
   const [isAddOpen, setIsAddOpen] = useState(false)
   const handleAddSubmit = () => {setIsAddOpen(false)}
