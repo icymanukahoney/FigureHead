@@ -8,11 +8,12 @@ const Header = () => {
 
   // This is setting up the state to track if the menu is open or not
   // This line sets the default state of the nav bottom to be false so it will not show by default
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // This makes the default the login and signup
 
   // This is setting the state for the nav bottom to true if the hamburger is clicked
   const handleClick = () => {
-    const [setIsMenuOpen] = useState(true);
+    setIsMenuOpen(true);
   };
 
   return (
