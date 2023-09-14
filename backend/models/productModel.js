@@ -28,15 +28,15 @@ const productSchema = new Schema({
     user_id: {
         type: String,
         required: true
-    }
-    //comments: [{
-        //type: Schema.Types.ObjectId,
-        //ref: 'Comment' 
-    //}],
-    //image: {
-       // type: String,
-        //required: true
-   // }
+    },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
+    images: {
+        type: String,
+        required: true
+   }
 
 }, {timestamps: true})
 module.exports = mongoose.model('Product', productSchema)
