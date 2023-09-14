@@ -28,11 +28,11 @@ const getProduct = async (req, res ) => {
 
 // Create a NEW Product
 const createProduct = async (req, res) => {
-    const {author, title, desc, price, categories} = req.body
+    const {author, title, desc, price, categories, user_id} = req.body
 
     // add doc to db
     try {
-        const product = await Product.create({author, title, desc, price, categories})
+        const product = await Product.create({author, title, desc, price, categories, user_id})
         res.status(200).json(product)
     } 
     catch (error) {
