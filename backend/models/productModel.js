@@ -31,12 +31,20 @@ const productSchema = new Schema({
     },
     comments: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comment'
+        ref: 'Comment' 
     }],
-    images: {
+    image_1: {
         type: String,
-        required: true
-   }
+        default: null
+    },
+    image_2: {
+        type: String,
+        default: null
+    },
+    image_3: {
+        type: String,
+        default: null
+    }
 
 }, {timestamps: true})
 module.exports = mongoose.model('Product', productSchema)

@@ -39,6 +39,8 @@ app.get('/', (req, res) =>{
 // Attach our Route to our app (express)
 app.use('/api/products', productRoutes)
 app.use('/api/user', userRoutes)
+// Serve static files fromupblic/uplaods
+app.use('/public/uploads', express.static('public/uploads'))
 
 // Connect to Mongo use Mongoose
 mongoose.connect(mongoURI, {
