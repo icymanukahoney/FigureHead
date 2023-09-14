@@ -30,9 +30,20 @@ const getProduct = async (req, res ) => {
 const createProduct = async (req, res) => {
     const {author, title, desc, price, categories, user_id} = req.body
 
+     // Get the uploaded image filename from the req.file object
+     const imageFilename = req.file ? req.file.filename : null;
+
     // add doc to db
     try {
-        const product = await Product.create({author, title, desc, price, categories, user_id})
+        const product = await Product.create({
+            author, 
+            title, 
+            desc, 
+            price, 
+            categories, 
+            user_id,
+            image: imageFilename
+        })
         res.status(200).json(product)
     } 
     catch (error) {
