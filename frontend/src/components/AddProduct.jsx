@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useProductsContext } from "../hooks/useProductsContext";
 
@@ -12,13 +12,13 @@ const AddProduct = (props) => {
   const [price, setPrice] = useState("");
   const [images, setImages] = useState([]);
 
-  const [image1, setImage1] = useState(null)
-  const [image2, setImage2] = useState(null)
-  const [image3, setImage3] = useState(null)
-
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log("images state updated", images);
+  }, [images])
 
   const handleCategoryChange = (e) => {
     const categoryName = e.target.value;
@@ -34,22 +34,25 @@ const AddProduct = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const user = JSON.parse(localStorage.getItem("user"))
+    // const user = JSON.parse(localStorage.getItem("user"))
     // const user_id = user.email
     const user_id = "ryan@test"
-
-    setImage1(images[0])
-    if (images[1]) {setImage2(images[1])}
-    if (images[2]) {setImage3(images[2])}
 
     const formData = new FormData()
     formData.append("title", title)
     formData.append("desc", desc)
     formData.append("price", price)
     formData.append("user_id", user_id)
-    formData.append("image1", image1)
-    if (image2) {formData.append("image2", image2)}
-    if (image3) {formData.append("image3", image3)}
+    
+    images.forEach((imageFile) => {
+      formData.append("images", imageFile)
+    })
+
+    // Log out each image from the formData
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+    }
+
     formData.append("categories", selectedCategories)
 
     try {
@@ -62,11 +65,14 @@ const AddProduct = (props) => {
       setTitle("")
       setDesc("")
       setPrice("")
-      setImages(null)
+      setImages([])
       setSelectedCategories([])
-      console.log("New Product Posted!", response.data);
+      
+      if (response.status === 200) {
+        console.log("New Product Posted!", response.data);
 
-      dispatch({type:"CREATE_PRODUCTS", payload: response.data})
+        dispatch({type:"CREATE_PRODUCTS", payload: response.data})
+      }
 
     } catch (error) {
       console.error(error)
@@ -95,14 +101,17 @@ const AddProduct = (props) => {
         </div>
         <div>
           <label>Price *</label>
-          <input type="text" placeholder="Add Name Here" 
+          <input type="text" placeholder="Price" 
           onChange={(e) => setPrice(e.target.value)}
           value={price} required />
         </div>
         <div>
           <label>Images (Up to three) *</label>
-          <input type="file" accept="image/*"
-          onChange={(e) => setImages(e.target.files[0])} required />
+          <input 
+          type="file" 
+          accept="image/*"
+          multiple
+          onChange={(e) => setImages([...e.target.files])}/>
         </div>
         <div>
           <label>Categories *</label>

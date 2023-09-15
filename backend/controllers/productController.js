@@ -31,7 +31,9 @@ const createProduct = async (req, res) => {
     const {author, title, desc, price, categories, user_id} = req.body
 
      // Get the uploaded image filename from the req.file object
-     const imageFilename = req.file ? req.file.filename : null;
+     const imageFilenames = req.files.map((file) => {
+        return "/uploads/" + file.filename
+     })
 
     // add doc to db
     try {
@@ -42,7 +44,7 @@ const createProduct = async (req, res) => {
             price, 
             categories, 
             user_id,
-            image: imageFilename
+            images: imageFilenames
         })
         res.status(200).json(product)
     } 
