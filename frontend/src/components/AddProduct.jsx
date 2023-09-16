@@ -114,7 +114,7 @@ const AddProduct = (props) => {
         </div>
         <div>
           <label>Price *</label>
-          <input type="text" placeholder="$0.00" 
+          <input type="number" placeholder="$0.00" 
           onChange={(e) => setPrice(e.target.value)}
           value={price} required />
         </div>
