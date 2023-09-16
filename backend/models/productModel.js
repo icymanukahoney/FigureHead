@@ -27,7 +27,7 @@ const productSchema = new Schema({
     },
     comments: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comment' 
+        ref: 'Comment' // Reference the Comment Model
     }],
     images: [{
         type: String,
