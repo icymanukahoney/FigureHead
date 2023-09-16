@@ -11,22 +11,23 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  const routeChange = () => {
-    let path = `/${product._id}`;
+  const routeChange = (product) => {
+    let path = `/products/${product._id}`;
     navigate(path)
   }
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await axios.get("http://localhost:4000/api/products")
+  const fetchProducts = async () => {
+    const response = await axios.get("http://localhost:4000/api/products")
 
-      // check if response is OK (200)
-      if (response.status === 200) {
-        console.log(response.data);
-        setProducts(response.data);
-        dispatch({type: "SET_PRODUCTS", payload: response.data})
-      }
+    // check if response is OK (200)
+    if (response.status === 200) {
+      console.log(response.data);
+      setProducts(response.data);
+      dispatch({type: "SET_PRODUCTS", payload: response.data})
     }
+  }
+
+  useEffect(() => {
 
     fetchProducts()
   }, [])
@@ -67,19 +68,21 @@ const Profile = () => {
             if (product.user_id === user_id) {
               return (
                 <div className="profile-card" key={product._id}>
-                  <div className="listing-image">
-                    <img src={`http://localhost:4000/public${product.images[0]}`} alt={product.title} />
+                  <div className="card-content"  onClick={() => {routeChange(product)}}>
+                    <div className="listing-image">
+                      <img src={`http://localhost:4000/public${product.images[0]}`} alt={product.title} />
+                    </div>
+                    <div>
+                      <p className="listing-title">
+                        {product.title}
+                      </p>
+                      <p className="listing-category">
+                        {product.categories.join(", ")}
+                      </p>
+                      <p className="listing-price">${product.price}.00</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="listing-title">
-                      {product.title}
-                    </p>
-                    <p className="listing-category">
-                      {product.categories.join(", ")}
-                    </p>
-                    <p className="listing-price">${product.price}.00</p>
-
-                    <div className="profile-listing-edit-delete">
+                  <div className="profile-listing-edit-delete">
                       <i className="fa fa-pen-to-square" onClick={() => {
                         setSelectedEditProduct(product)
                         setIsEditOpen(true)
@@ -88,17 +91,18 @@ const Profile = () => {
                         handleDelete(product._id)
                       }}></i>
                     </div>
-                  </div>
                 </div>
               )
             }
           })}
-          <div id="add-listing" className="profile-card" onClick={() => {
-            setIsAddOpen(true)
-          }}>
-            <div>
-              <h3>Create New Listing</h3>
-              <i id="add-icon" className="fa fa-circle-plus"></i>
+          <div className="profile-card">
+            <div id="add-listing" className="card-content" onClick={() => {
+              setIsAddOpen(true)
+            }}>
+              <div>
+                <h3>Create New Listing</h3>
+                <i id="add-icon" className="fa fa-circle-plus"></i>
+              </div>
             </div>
           </div>
         </div>

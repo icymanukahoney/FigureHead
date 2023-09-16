@@ -73,7 +73,7 @@ const EditProduct = (props) => {
 
   return (
     <div id="add-product-modal" className="add-edit-modals">
-      <form onSubmit={handleSubmit}>
+      <form>
         <h2>Edit LISTING</h2>
         <div>
           <label>Name *</label>
@@ -128,7 +128,8 @@ const EditProduct = (props) => {
               checked={editSelectedCategories.includes("tv")} /><label>TV Show</label>
             </div>
             <div>
-              <button>SUBMIT</button>
+              <button type="button" onClick={handleCancel}>CANCEL</button>
+              <button type="button" onClick={handleSubmit}>SUBMIT</button>
             </div>
             {error && <div className="error">{error}</div>}
           </div>
