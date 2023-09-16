@@ -3,6 +3,12 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 const SingleProduct = () => {
+  const navigate = useNavigate()
+
+  const handleBuy = () => {
+    navigate('/payment');
+  }
+
   const {id} = useParams()
   const [product, setProduct] = useState(null)
 
@@ -23,9 +29,11 @@ const SingleProduct = () => {
 
       <div id="product">
 
-        <img src={`http://localhost:4000/public${product?.images[0]}`} alt="main image for the product" className="main-img product-img" />
-        {product?.images[1] && <img src="/img/logo.png" alt="secondary image for the product" className="second-img product-img" />}
-        {product?.images[2] && <img src="/img/logo.png" alt="tertiary image for the product" className="third-img product-img" />}
+        <img src={`http://localhost:4000/public${product?.images[0]}`} alt={product?.title} className="main-img product-img" />
+        
+        {product?.images[1] && <img src={`http://localhost:4000/public${product?.images[1]}`} alt={product?.title} className="second-img product-img" />}
+
+        {product?.images[2] && <img src={`http://localhost:4000/public${product?.images[2]}`} alt={product?.title} className="third-img product-img" />}
 
         <h2>{product?.title}</h2>
         <div className="product-details">
@@ -74,7 +82,7 @@ const SingleProduct = () => {
 
       <div id="mobile-buy-button">
         <div><h2>${product?.price}.00</h2><p>inc GST</p></div>
-        <div><button><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
+        <div onClick={handleBuy}><button><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
       </div>
     </div>
   )

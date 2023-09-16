@@ -42,7 +42,7 @@ const createProduct = async (req, res) => {
             title, 
             desc, 
             price, 
-            categories, 
+            categories: categories.split(","), 
             user_id,
             images: imageFilenames
         })
