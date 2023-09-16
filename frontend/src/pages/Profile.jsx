@@ -34,6 +34,7 @@ const Profile = () => {
   const [isAddOpen, setIsAddOpen] = useState(false)
   const handleAddSubmit = () => {setIsAddOpen(false)}
 
+  const [selectedEditProduct, setSelectedEditProduct] = useState(null)
   const [isEditOpen, setIsEditOpen] = useState(false)
   const handleEditSubmit = () => {setIsEditOpen(false)}
 
@@ -74,14 +75,13 @@ const Profile = () => {
                       {product.title}
                     </p>
                     <p className="listing-category">
-                      {product.categories.map((category) => {
-                        return (category)
-                      })}
+                      {product.categories.join(", ")}
                     </p>
                     <p className="listing-price">${product.price}.00</p>
 
                     <div className="profile-listing-edit-delete">
                       <i className="fa fa-pen-to-square" onClick={() => {
+                        setSelectedEditProduct(product)
                         setIsEditOpen(true)
                       }}></i>
                       <i className="fa fa-trash" onClick={() => {
@@ -104,7 +104,7 @@ const Profile = () => {
         </div>
       </div>
         {isAddOpen && <AddProduct onFormSubmit={handleAddSubmit} />}
-        {isEditOpen && <EditProduct onFormSubmit={handleEditSubmit} />}
+        {isEditOpen && <EditProduct product={selectedEditProduct} onFormSubmit={handleEditSubmit} />}
     </div>
   )
 }

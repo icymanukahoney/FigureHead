@@ -76,6 +76,12 @@ a {
   font-size: 14px;
   font-weight: 700;
 }
+#profile-page #profile-listings .profile-card .listing-price {
+  font-size: 20px;
+}
+#profile-page #profile-listings .profile-card .listing-category {
+  text-transform: capitalize;
+}
 #profile-page #profile-listings .profile-card .profile-listing-edit-delete {
   font-size: 14px;
   position: absolute;

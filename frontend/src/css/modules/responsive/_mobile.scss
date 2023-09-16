@@ -81,6 +81,14 @@ a {
                 font-weight: $bold-font;
             }
 
+            .listing-price {
+                font-size: $mobile-x-large-size;
+            }
+
+            .listing-category {
+                text-transform: capitalize;
+            }
+
             .profile-listing-edit-delete {
                 font-size: $mobile-large-size;
 

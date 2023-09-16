@@ -55,7 +55,7 @@ router.post('/', upload.array("images", 3), createProduct)
 // DELETE a product
 router.delete('/:id', deleteProduct)
 
-// UPDATE all products
+// UPDATE a product
 router.patch('/:id', updateProduct)
 
 // export the module
