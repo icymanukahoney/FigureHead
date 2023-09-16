@@ -45,6 +45,18 @@ const EditProduct = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    // Error catch for Images and categories
+    // if (editImages.length === 0) {
+    //   setError("Must have images")
+    //   return
+    // }
+    if (editSelectedCategories.length === 0) {
+      setError("Must have at least 1 category selected")
+      return
+    }
+    // If passed all checks, remove any current errors on screen
+    setError(null)
+
     const updatedProduct = {
       title: editTitle,
       desc: editDesc,

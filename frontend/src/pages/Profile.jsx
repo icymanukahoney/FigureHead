@@ -33,11 +33,17 @@ const Profile = () => {
   }, [])
 
   const [isAddOpen, setIsAddOpen] = useState(false)
-  const handleAddSubmit = () => {setIsAddOpen(false)}
+  const handleAddSubmit = () => {
+    setIsAddOpen(false)
+    fetchProducts()
+  }
 
   const [selectedEditProduct, setSelectedEditProduct] = useState(null)
   const [isEditOpen, setIsEditOpen] = useState(false)
-  const handleEditSubmit = () => {setIsEditOpen(false)}
+  const handleEditSubmit = () => {
+    setIsEditOpen(false)
+    fetchProducts()
+  }
 
   const handleDelete = async (id) => {
     try {
@@ -51,6 +57,7 @@ const Profile = () => {
     } catch (error) {
       console.error(error)
     }
+    fetchProducts()
   }
 
   return (

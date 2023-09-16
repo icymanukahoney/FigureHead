@@ -43,7 +43,19 @@ const AddProduct = (props) => {
     formData.append("desc", desc)
     formData.append("price", price)
     formData.append("user_id", user_id)
-    
+
+    // Error catch for Images and categories
+    if (images.length === 0) {
+      setError("Must have images")
+      return
+    }
+    if (selectedCategories.length === 0) {
+      setError("Must have at least 1 category selected")
+      return
+    }
+    // If passed all checks, remove any current errors on screen
+    setError(null)
+
     images.forEach((imageFile) => {
       formData.append("images", imageFile)
     })
@@ -72,14 +84,15 @@ const AddProduct = (props) => {
         console.log("New Product Posted!", response.data);
 
         dispatch({type:"CREATE_PRODUCTS", payload: response.data})
+        props.onFormSubmit();
+      } else {
+        throw Error("Server Error")
       }
 
     } catch (error) {
       console.error(error)
       setError(error.message)
     }
-
-    props.onFormSubmit();
   }
 
   return (
