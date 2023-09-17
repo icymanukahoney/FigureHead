@@ -23,6 +23,38 @@ const SingleProduct = () => {
     })
   }, [])
 
+  // Commenting
+  const [isWritingNewComment, setIsWritingNewComment] = useState(null);
+  const [commentText, setCommentText] = useState("");
+
+  const handleAddNewComment = async () => {
+    setIsWritingNewComment(true)
+  }
+
+  const handleAddComment = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:4000/api/comments/products/${product._id}/comments`,
+        {
+          text: commentText,
+          user_id: user_id,
+        }
+      );
+
+      if (response === 201) {
+        const newComment = response.data;
+        const updatedComments = [...product.comment, newComment];
+        const updatedProduct = { ...product, comments: updatedComments };
+
+        dispatchEvent({ type: "UPDATE_PRODUCT", payload: updatedProduct });
+
+        setCommentText("");
+      }
+    } catch (error) {
+      console.error("Error Adding Comment: ", error);
+    }
+  };
+
   return (
     <div id="product-page">
       <div className='bg-image'></div>
@@ -50,34 +82,35 @@ const SingleProduct = () => {
       </div>
       <div id="comment-flex">
 
-      <div><p className="comment-header">Write a comment</p><i className="fa fa-pencil"></i></div>
+      <div 
+      onClick={handleAddNewComment}>
+        <p className="comment-header">Write a comment</p><i className="fa fa-pencil"></i>
+      </div>
 
-      <div className="comment">
-          <div className="comment-author">
-            <div>
-              <img src="/img/logo.png" alt="Profile Picture" />
-              <p className='author'>AUTHOR NAME</p>
-              <p className='date'>DATE POSTED</p>
-            </div>
-          </div>
-          <div className="comment-content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sed ut rerum aliquam deserunt quam repellat illum molestiae! Quidem, fugit.</p>
-          </div>
-        </div>
-        
+      {isWritingNewComment && 
+      <div className="new-comment">
+        <textarea cols={30} rows={30}></textarea>
+        <button onClick={handleAddCommentSubmit}></button>
+      </div>
+      }
+
+      {product.comments.length !== 0 ? (product.comments.map((comment) => ( 
         <div className="comment">
           <div className="comment-author">
             <div>
               <img src="/img/logo.png" alt="Profile Picture" />
-              <p className='author'>AUTHOR NAME</p>
-              <p className='date'>DATE POSTED</p>
+              <p className='author'>{comment.user_id}</p>
+              <p className='date'>{formatDistanceToNow(new Date (comment.createdAt), {includeSeconds: true,})}{" "}ago</p>
             </div>
           </div>
           <div className="comment-content">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum voluptates omnis dolores cumque deleniti, iste aperiam atque quas exercitationem. Voluptatem, optio laudantium? Numquam voluptas odio consectetur recusandae asperiores enim animi quibusdam veniam ab, totam, laudantium vero praesentium eos suscipit quod.</p>
+            <p>{comment.text}</p>
           </div>
         </div>
-
+        ))
+        ) : (
+          <div><h3>No Comments To Show</h3></div>
+        )}
       </div>
 
       <div id="mobile-buy-button">

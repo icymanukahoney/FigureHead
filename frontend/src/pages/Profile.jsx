@@ -69,9 +69,8 @@ const Profile = () => {
         <h2>Your products:</h2>
         <div id="profile-listings">
           {products && products.map((product) => {
-            // const user = JSON.parse(localStorage.getItem("user"))
-            // const user_id = user.email
-            const user_id = "ryan@test"
+            const user = JSON.parse(localStorage.getItem("user"))
+            const user_id = user.email
             if (product.user_id === user_id) {
               return (
                 <div className="profile-card" key={product._id}>

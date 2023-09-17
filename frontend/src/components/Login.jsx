@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useLogin } from "../hooks/useLogin";
 
-const Login = () => {
+const Login = (props) => {
   // Users Email and Password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +13,10 @@ const Login = () => {
 
   // Login Hook
   const { login, isLoading } = useLogin();
+  
+  const handleClose = () => {
+    props.onFormSubmit();
+  }
 
   const handleSubmit = async (e) => {
     // Prevent the default form submission behavior (page reload)
@@ -36,6 +41,7 @@ const Login = () => {
     try {
       // Attempt to login with the provided email and password
       await login(email, password);
+      props.onFormSubmit();
     } catch (error) {
       // If an error occurs during login, this error message will display
       setErrorMessage("Login failed. Please check if your username and password is correct."); // Change this after discussing with group
@@ -44,6 +50,7 @@ const Login = () => {
 
   return (
     <div>
+      <p onClick={handleClose}>X</p>
       <form className="login" onSubmit={handleSubmit}>
         <label>
           Email:

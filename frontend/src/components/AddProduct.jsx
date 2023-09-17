@@ -34,9 +34,8 @@ const AddProduct = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // const user = JSON.parse(localStorage.getItem("user"))
-    // const user_id = user.email
-    const user_id = "ryan@test"
+    const user = JSON.parse(localStorage.getItem("user"))
+    const user_id = user.email
 
     const formData = new FormData()
     formData.append("title", title)
