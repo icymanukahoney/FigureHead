@@ -17,6 +17,7 @@ app.use(cors())
 // import routes
 const productRoutes = require('./routes/products')
 const userRoutes = require('./routes/user')
+const commentRoutes = require('./routes/comments')
 
 
 //log out path and method of each request
@@ -39,6 +40,7 @@ app.get('/', (req, res) =>{
 // Attach our Route to our app (express)
 app.use('/api/products', productRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/comments', commentRoutes)
 // Serve static files fromupblic/uplaods
 app.use('/public/uploads', express.static('public/uploads'))
 

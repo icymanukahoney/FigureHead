@@ -1,5 +1,5 @@
 // Imports
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import "./css/App.css"
 
@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/product" element={<SingleProduct />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useProductsContext } from "../hooks/useProductsContext";
 
@@ -6,63 +6,75 @@ const EditProduct = (props) => {
 
   const {dispatch} = useProductsContext()
 
+  const product = props.product
   // Form input state variables
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [price, setPrice] = useState("");
-  const [images, setImages] = useState([]);
+  const [editTitle, setEditTitle] = useState(product.title);
+  const [editDesc, setEditDesc] = useState(product.desc);
+  const [editPrice, setEditPrice] = useState(product.price);
+  const [editImages, setEditImages] = useState(product.images);
 
-  const [image1, setImage1] = useState(null)
-  const [image2, setImage2] = useState(null)
-  const [image3, setImage3] = useState(null)
-
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [editSelectedCategories, setEditSelectedCategories] = useState([]);
 
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log("images state updated", editImages);
+  }, [editImages])
 
   const handleCategoryChange = (e) => {
     const categoryName = e.target.value;
 
     if (e.target.checked) {
-      setSelectedCategories((prevCategories) => [...prevCategories, categoryName]);
+      setEditSelectedCategories((prevCategories) => [...prevCategories, categoryName]);
     } else {
-      setSelectedCategories((prevCategories) => prevCategories.filter((category) => category !== categoryName)
+      setEditSelectedCategories((prevCategories) => prevCategories.filter((category) => category !== categoryName)
       );
     }
+  }
+
+  const handleCancel = () => {
+    setEditTitle(product.title)
+    setEditDesc(product.desc)
+    setEditPrice(product.price)
+    setEditImages(product.images)
+    setEditSelectedCategories(product.categories)
+
+    props.onFormSubmit();
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const user = JSON.parse(localStorage.getItem("user"))
-    const user_id = user.email
+    // Error catch for Images and categories
+    // if (editImages.length === 0) {
+    //   setError("Must have images")
+    //   return
+    // }
+    if (editSelectedCategories.length === 0) {
+      setError("Must have at least 1 category selected")
+      return
+    }
+    // If passed all checks, remove any current errors on screen
+    setError(null)
 
-    setImage1(images[0])
-    if (images[1]) {setImage2(images[1])}
-    if (images[2]) {setImage3(images[2])}
-
-    const formData = new FormData()
-    formData.append("title", title)
-    formData.append("desc", desc)
-    formData.append("price", price)
-    formData.append("user_id", user_id)
-    formData.append("image1", image1)
-    if (image2) {formData.append("image2", image2)}
-    if (image3) {formData.append("image3", image3)}
-    formData.append("categories", selectedCategories)
+    const updatedProduct = {
+      title: editTitle,
+      desc: editDesc,
+      price: editPrice,
+      images: editImages,
+      categories: editSelectedCategories
+    }
 
     try {
-      const response = await axios.post("http://localhost:4000/api/products", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
+      const response = await axios.patch(`http://localhost:4000/api/products/${product._id}`, updatedProduct)
 
-      setTitle("")
-      setDesc("")
-      setPrice("")
-      setImages(null)
-      setSelectedCategories([])
+      const updatedData = response.data
+      
+      if (response.status === 200) {
+        console.log("Product Updated!", response.data);
+
+        dispatch({type:"UPDATE_PRODUCT", payload: updatedData})
+      }
     } catch (error) {
       console.error(error)
       setError(error.message)
@@ -72,62 +84,66 @@ const EditProduct = (props) => {
   }
 
   return (
-    <div id="edit-product-modal" className="add-edit-modals">
-      <form onSubmit={handleSubmit}>
-        <h2>EDIT LISTING</h2>
+    <div id="add-product-modal" className="add-edit-modals">
+      <form>
+        <h2>Edit LISTING</h2>
         <div>
-          <label>Edit Name *</label>
-          <input type="text" placeholder="Add Name Here"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title} required />
+          <label>Name *</label>
+          <input type="text" placeholder="Edit Name Here"
+          onChange={(e) => setEditTitle(e.target.value)}
+          value={editTitle} required />
         </div>
         <div>
-          <label>Edit Description</label>
-          <p><textarea cols="30" rows="10" placeholder="Add Description Here"
-          onChange={(e) => setDesc(e.target.value)}
-          value={desc} >
+          <label>Description</label>
+          <p><textarea cols="30" rows="10" placeholder="Edit Description Here"
+          onChange={(e) => setEditDesc(e.target.value)}
+          value={editDesc} >
           </textarea></p>
         </div>
         <div>
-          <label>Edit Price *</label>
-          <input type="text" placeholder="Add Name Here" 
-          onChange={(e) => setPrice(e.target.value)}
-          value={price} required />
+          <label>Price *</label>
+          <input type="text" placeholder="$0.00" 
+          onChange={(e) => setEditPrice(e.target.value)}
+          value={editPrice} required />
         </div>
+        {/* <div>
+          <label>Images (Up to three) *</label>
+          <input 
+          type="file" 
+          accept="image/*"
+          multiple
+          onChange={(e) => setEditImages([...e.target.files])}/>
+        </div> */}
         <div>
-          <label>Edit Images (Up to three) *</label>
-          <input type="file" accept="image/*"
-          onChange={(e) => setImages(e.target.files[0])} required />
-        </div>
-        <div>
-          <label>Edit Categories *</label>
+          <label>Categories *</label>
           <div className="category-flex">
             <div>
               <input type="checkbox" name="category" value="anime"
               onChange={handleCategoryChange}
-              checked={selectedCategories.includes("anime")} /><label>Anime</label>
+              checked={editSelectedCategories.includes("anime")} /><label>Anime</label>
               <input type="checkbox" name="category" value="cartoon"
               onChange={handleCategoryChange}
-              checked={selectedCategories.includes("cartoon")} /><label>Cartoon</label>
+              checked={editSelectedCategories.includes("cartoon")} /><label>Cartoon</label>
               <input type="checkbox" name="category" value="comic"
               onChange={handleCategoryChange}
-              checked={selectedCategories.includes("comic")} /><label>Comic</label>
+              checked={editSelectedCategories.includes("comic")} /><label>Comic</label>
             </div>
             <div>
               <input type="checkbox" name="category" value="game"
               onChange={handleCategoryChange}
-              checked={selectedCategories.includes("game")} /><label>Game</label>
+              checked={editSelectedCategories.includes("game")} /><label>Game</label>
               <input type="checkbox" name="category" value="movie"
               onChange={handleCategoryChange}
-              checked={selectedCategories.includes("movie")} /><label>Movie</label>
+              checked={editSelectedCategories.includes("movie")} /><label>Movie</label>
               <input type="checkbox" name="category" value="tv"
               onChange={handleCategoryChange}
-              checked={selectedCategories.includes("tv")} /><label>TV Show</label>
+              checked={editSelectedCategories.includes("tv")} /><label>TV Show</label>
             </div>
             <div>
-              <button>CANCEL</button>
-              <button>EDIT POST</button>
+              <button type="button" onClick={handleCancel}>CANCEL</button>
+              <button type="button" onClick={handleSubmit}>SUBMIT</button>
             </div>
+            {error && <div className="error">{error}</div>}
           </div>
         </div>
       </form>

@@ -5,9 +5,18 @@ const mongoose = require('mongoose')
 
 // Get ALL products
 const getProducts = async (req, res) => {
-    // -1 in sort will put them in descending order (latest first)
-    const products = await Product.find({}).sort({createdAt: -1})
-    res.status(200).json(products)
+    try {
+        // -1 in sort will put them in descending order (latest first)
+        const products = await Product.find({}).populate({
+            path: 'comments',
+            model: "Comment"
+        }).sort({createdAt: -1});
+        
+        res.status(200).json(products)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" })
+    }
 }
 
 // get SINGLE product
@@ -15,15 +24,24 @@ const getProduct = async (req, res ) => {
     const { id } = req.params
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such Product'})
+        return res.status(404).json({error: 'No such Product: invalid Id'})
     }
 
-    const product = await Product.findById(id)
+    try {
+        const product = await Product.findById(id).populate({
+            path: "comments",
+            model: "Comment" // Reference the comment model
+        });
 
-    if(!product) {
-        return res.status(404).json({error: 'No such product'})
+        if(!product) {
+            return res.status(404).json({error: 'No such product: product does not exist'})
+        }
+
+        res.status(200).json(product)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" })
     }
-    res.status(200).json(product)
 }
 
 // Create a NEW Product
@@ -31,7 +49,9 @@ const createProduct = async (req, res) => {
     const {author, title, desc, price, categories, user_id} = req.body
 
      // Get the uploaded image filename from the req.file object
-     const imageFilename = req.file ? req.file.filename : null;
+     const imageFilenames = req.files.map((file) => {
+        return "/uploads/" + file.filename
+     })
 
     // add doc to db
     try {
@@ -40,9 +60,9 @@ const createProduct = async (req, res) => {
             title, 
             desc, 
             price, 
-            categories, 
+            categories: categories.split(","), 
             user_id,
-            image: imageFilename
+            images: imageFilenames
         })
         res.status(200).json(product)
     } 

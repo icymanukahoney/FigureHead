@@ -1,30 +1,56 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 
 const SingleProduct = () => {
+  const navigate = useNavigate()
+
+  const handleBuy = () => {
+    navigate('/payment');
+  }
+
+  const {id} = useParams()
+  const [product, setProduct] = useState(null)
+
+  useEffect(() => {
+    axios.get(`http://localhost:4000/api/products/${id}`)
+    .then((res) => {
+      console.log(res.data);
+      setProduct(res.data)
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  }, [])
+
   return (
     <div id="product-page">
       <div className='bg-image'></div>
 
       <div id="product">
 
-        <img src="/img/logo.png" alt="main image for the product" className="main-img product-img" />
-        <img src="/img/logo.png" alt="secondary image for the product" className="second-img product-img" />
-        <img src="/img/logo.png" alt="tertiary image for the product" className="third-img product-img" />
+        <img src={`http://localhost:4000/public${product?.images[0]}`} alt={product?.title} className="main-img product-img" />
+        
+        {product?.images[1] && <img src={`http://localhost:4000/public${product?.images[1]}`} alt={product?.title} className="second-img product-img" />}
 
-        <h2>PRODUCT NAME</h2>
+        {product?.images[2] && <img src={`http://localhost:4000/public${product?.images[2]}`} alt={product?.title} className="third-img product-img" />}
+
+        <h2>{product?.title}</h2>
         <div className="product-details">
-          <p>Product By: Author Name</p>
-          <p>Price: $50.00</p>
-          <p>Category, Category</p>
+          <p>Product By: {product?.user_id}</p>
+          <p>Price: ${product?.price}.00</p>
+          <p>{product?.categories.join(", ")}</p>
         </div>
         <div className="product-aside">
           <i className="fa fa-heart"></i>
         </div>
         <div className="product-description">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum laborum, non eligendi expedita cumque nam ea, voluptas quod praesentium dolore nemo hic in assumenda maxime molestias quidem quaerat blanditiis ex autem a libero officia temporibus ducimus? Soluta vero incidunt, reiciendis aliquam assumenda minus doloribus cumque expedita impedit libero magni molestiae tenetur, excepturi veritatis hic atque delectus nulla dolore laudantium officiis.</p>
+          <p>{product?.desc}</p>
         </div>
       </div>
       <div id="comment-flex">
+
+      <div><p className="comment-header">Write a comment</p><i className="fa fa-pencil"></i></div>
 
       <div className="comment">
           <div className="comment-author">
@@ -52,6 +78,11 @@ const SingleProduct = () => {
           </div>
         </div>
 
+      </div>
+
+      <div id="mobile-buy-button">
+        <div><h2>${product?.price}.00</h2><p>inc GST</p></div>
+        <div onClick={handleBuy}><button><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
       </div>
     </div>
   )
