@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useProductsContext } from "../hooks/useProductsContext";
 
 const SingleProduct = () => {
   const navigate = useNavigate()
+  const {dispatch} = useProductsContext()
 
   const handleBuy = () => {
     navigate('/payment');
@@ -25,33 +28,58 @@ const SingleProduct = () => {
 
   // Commenting
   const [isWritingNewComment, setIsWritingNewComment] = useState(null);
+  const [isEditingComment, setIsEditingComment] = useState(null)
   const [commentText, setCommentText] = useState("");
 
   const handleAddNewComment = async () => {
     setIsWritingNewComment(true)
   }
 
-  const handleAddComment = async () => {
+  const closeAddNewComment = () => {
+    setIsWritingNewComment(false)
+  }
+
+  const handleAddCommentSubmit = async () => {
     try {
       const response = await axios.post(
         `http://localhost:4000/api/comments/products/${product._id}/comments`,
         {
           text: commentText,
-          user_id: user_id,
+          user_id: product.user_id,
         }
       );
 
-      if (response === 201) {
+      if (response.status === 201) {
+        console.log("response 201");
         const newComment = response.data;
-        const updatedComments = [...product.comment, newComment];
+        const updatedComments = [...product.comments, newComment];
         const updatedProduct = { ...product, comments: updatedComments };
 
-        dispatchEvent({ type: "UPDATE_PRODUCT", payload: updatedProduct });
+        dispatch({ type: "UPDATE_PRODUCT", payload: updatedProduct });
 
         setCommentText("");
+        setIsWritingNewComment(false)
       }
     } catch (error) {
       console.error("Error Adding Comment: ", error);
+    }
+  };
+
+  const deleteComment = async (comment) => {
+    console.log(product._id);
+    console.log(comment._id);
+    try {
+      const response = await axios.delete(
+        `http://localhost:4000/api/comments/products/${product._id}/comments/${comment._id}`
+      )
+      console.log("after axios");
+      const json = await response.data
+      if (response.status === 201) {
+        console.log(json);
+        dispatch({ type: "UPDATE_PRODUCT", payload: product.comments});
+      }
+    } catch (error) {
+      console.error("Error Deleting Comment: ", error);
     }
   };
 
@@ -88,14 +116,18 @@ const SingleProduct = () => {
       </div>
 
       {isWritingNewComment && 
-      <div className="new-comment">
-        <textarea cols={30} rows={30}></textarea>
-        <button onClick={handleAddCommentSubmit}></button>
+      <div className="new-comment-inputs">
+        <p onClick={closeAddNewComment}>X</p>
+        <label>Comment Text:</label>
+        <textarea value={commentText} 
+        onChange={(e) => {setCommentText(e.target.value)}}
+        placeholder="Enter your comment message here"></textarea>
+        <button onClick={handleAddCommentSubmit}>Comment</button>
       </div>
       }
 
-      {product.comments.length !== 0 ? (product.comments.map((comment) => ( 
-        <div className="comment">
+      {product?.comments.length !== 0 ? (product?.comments.map((comment) => ( 
+        <div className="comment" key={comment._id}>
           <div className="comment-author">
             <div>
               <img src="/img/logo.png" alt="Profile Picture" />
@@ -106,6 +138,7 @@ const SingleProduct = () => {
           <div className="comment-content">
             <p>{comment.text}</p>
           </div>
+          <p onClick={() => {deleteComment(comment)}}>Delete</p>
         </div>
         ))
         ) : (
