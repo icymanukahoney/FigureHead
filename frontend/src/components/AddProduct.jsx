@@ -16,10 +16,6 @@ const AddProduct = (props) => {
 
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    console.log("images state updated", images);
-  }, [images])
-
   const handleCategoryChange = (e) => {
     const categoryName = e.target.value;
 
@@ -59,11 +55,6 @@ const AddProduct = (props) => {
       formData.append("images", imageFile)
     })
 
-    // Log out each image from the formData
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ": " + pair[1]);
-    }
-
     formData.append("categories", selectedCategories)
 
     try {
@@ -80,8 +71,6 @@ const AddProduct = (props) => {
       setSelectedCategories([])
       
       if (response.status === 200) {
-        console.log("New Product Posted!", response.data);
-
         dispatch({type:"CREATE_PRODUCTS", payload: response.data})
         props.onFormSubmit();
       } else {

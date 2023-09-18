@@ -17,10 +17,6 @@ const EditProduct = (props) => {
 
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    console.log("images state updated", editImages);
-  }, [editImages])
-
   const handleCategoryChange = (e) => {
     const categoryName = e.target.value;
 
@@ -71,8 +67,6 @@ const EditProduct = (props) => {
       const updatedData = response.data
       
       if (response.status === 200) {
-        console.log("Product Updated!", response.data);
-
         dispatch({type:"UPDATE_PRODUCT", payload: updatedData})
       }
     } catch (error) {
