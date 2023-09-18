@@ -21,7 +21,6 @@ const Profile = () => {
 
     // check if response is OK (200)
     if (response.status === 200) {
-      console.log(response.data);
       setProducts(response.data);
       dispatch({type: "SET_PRODUCTS", payload: response.data})
     }
@@ -51,7 +50,6 @@ const Profile = () => {
 
       const json = await response.data
       if (response.status === 200) {
-        console.log(json);
         dispatch({type: "DELETE_PRODUCT", payload:json})
       }
     } catch (error) {

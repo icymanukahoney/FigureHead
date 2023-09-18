@@ -32,8 +32,6 @@ export const useLogin = () => {
 
                 setIsLoading(false)
             }
-
-            console.log(response);
         } catch (error) {
             console.error(error.response.data.error);
 

@@ -15,20 +15,18 @@ const SingleProduct = () => {
   const {id} = useParams()
   const [product, setProduct] = useState(null)
 
-  const fetchProducts = () => {
-    useEffect(() => {
-      axios.get(`http://localhost:4000/api/products/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        setProduct(res.data)
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-    }, [])
+  const fetchProducts = async () => {
+    const response = await axios.get(`http://localhost:4000/api/products/${id}`)
+    
+    if (response.status === 200) {
+      setProduct(response.data);
+      dispatch({type: "SET_PRODUCTS", payload: response.data})
+    }
   }
-  
-  fetchProducts()
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
 
   // Commenting
   const [isWritingNewComment, setIsWritingNewComment] = useState(null);
@@ -50,7 +48,6 @@ const SingleProduct = () => {
       );
 
       if (response.status === 201) {
-        console.log("response 201");
         const newComment = response.data;
         const updatedComments = [...product.comments, newComment];
         const updatedProduct = { ...product, comments: updatedComments };
@@ -70,7 +67,6 @@ const SingleProduct = () => {
   const closeEditComment = () => {setIsEditingComment(null)}
 
   const handleEditCommentSubmit = async (comment) => {
-    console.log("clicked edit comment");
     try {
       const response = await axios.patch(
         `http://localhost:4000/api/comments/products/${product._id}/comments/${comment._id}`, 
@@ -78,11 +74,8 @@ const SingleProduct = () => {
           text: editCommentText,
         }
       );
-      console.log("axios pass");
 
       if (response.status === 201) {
-        console.log("edit response 201");
-
         setCommentText("");
         setEditCommentText("");
         closeEditComment(null)
@@ -94,16 +87,12 @@ const SingleProduct = () => {
   }
 
   const deleteComment = async (comment) => {
-    console.log(product._id);
-    console.log(comment._id);
     try {
       const response = await axios.delete(
         `http://localhost:4000/api/comments/products/${product._id}/comments/${comment._id}`
-      )
-      console.log("after axios");
+      );
       const json = await response.data
       if (response.status === 201) {
-        console.log(json);
         fetchProducts()
       }
     } catch (error) {

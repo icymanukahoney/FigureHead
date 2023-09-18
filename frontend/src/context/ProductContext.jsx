@@ -6,7 +6,7 @@ export const productsReducer = (state, action) => {
     switch (action.type) {
         case 'SET_PRODUCTS':
             return {
-                products: action.payload
+                products: Array.isArray(action.payload) ? action.payload : [action.payload]
             }
         case 'CREATE_PRODUCTS':
             return {
