@@ -22,7 +22,7 @@ function App() {
       <div className="pages">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>

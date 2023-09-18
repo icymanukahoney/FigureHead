@@ -1,35 +1,32 @@
 import React, { useState } from 'react';
+import { useSignup } from '../hooks/useSignup';
 
-const Signup = () => {
-  const [user, setUsername] = useState("");
+const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
   // Error messages for form validation
-  const [userError, setUserError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Login Hook
+  // Signup Hook
   const { signup, isLoading } = useSignup();
+
+  const handleClose = () => {
+    props.onFormSubmit();
+  }
 
   const handleSubmit = async (e) => {
     // Prevent the default form submission behavior (page reload)
     e.preventDefault(); 
 
     // Clear previous error messages
-    setUserError("");
     setEmailError("");
     setPasswordError("");
     setErrorMessage("");
     
     // Validate form inputs
-    if (!user) {
-      setUserError("Please enter a username.");
-      return;
-    }
-
     if (!email) {
       setEmailError("Please enter an email.");
       return;
@@ -42,7 +39,8 @@ const Signup = () => {
 
     try {
       // Attempt to login with the provided email and password
-      await signup(user, email, password);
+      await signup(email, password);
+      props.onFormSubmit();
     } catch (error) {
       // If an error occurs during login, this error message will display
       setErrorMessage("Signup failed. Please check if your username and password is correct."); // Change this after discussing with group
@@ -51,12 +49,8 @@ const Signup = () => {
 
   return (
     <div>
+      <p onClick={handleClose}>X</p>
       <form className="signup" onSubmit={handleSubmit}>
-        <label>
-          User:
-          <input type="text" value={user} onChange={(e) => setUser(e.target.value)} />
-          <p className="error">{userError}</p>
-        </label>
         <label>
           Email:
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
