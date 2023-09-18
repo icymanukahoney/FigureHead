@@ -19,7 +19,6 @@ const Header = () => {
   // This is setting up the state to track if the menu is open or not
   // This line sets the default state of the nav bottom to be false so it will not show by default
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // This makes the default the login and signup
 
   // Set up login menu toggle state as well as close when form submit
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -37,9 +36,10 @@ const Header = () => {
     setIsMenuOpen(true);
   };
 
+  
+  const localUser = JSON.parse(localStorage.getItem("user"))
   const handleProfileClick = () => {
-    const user = JSON.parse(localStorage.getItem("user"))
-    const user_id = user.email
+    const user_id = localUser.email
     const path = `/profile/${user_id}`
     navigate(path)
   }
@@ -61,7 +61,6 @@ const Header = () => {
         <h1>FigureHead</h1>
         <i className="fa-solid fa-bars" onClick={handleClick}></i> {/* This is the Hamburger Menu */}
       </div>
-
       
       {isMenuOpen && ( // this checks to see if the menu is open
         <div className="nav-flex" id="nav-bottom">
@@ -72,7 +71,7 @@ const Header = () => {
               <button className="profile-btn"
               onClick={handleProfileClick}>
                 <i className="fa-solid fa-circle-user"></i> {/* This is the Profile Icon */}
-                User Name {/* Here is placeholder user name */}
+                {localUser.email} {/* Here is placeholder user name */}
               </button>
         
               <button className="logout-btn"
