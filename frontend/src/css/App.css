@@ -15,7 +15,8 @@ body {
   font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
-p, a {
+p,
+a {
   font-size: 12px;
 }
 
@@ -31,6 +32,60 @@ a {
   margin-bottom: -150px;
 }
 
+nav .nav-flex .logo img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.background-desktop {
+  display: none;
+}
+
+.advert-container {
+  display: none;
+}
+
+.header-desktop {
+  display: none;
+}
+
+.background-mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.logo-hero-mobile {
+  margin-top: 2rem;
+}
+.logo-hero-mobile img {
+  width: 50%;
+}
+
+.whats-new-title-mobile {
+  margin-top: 2rem;
+  text-align: left;
+  width: 80%;
+  padding: 0.5rem 1rem;
+  background-color: #F1D7A7;
+  color: #25303A;
+}
+
+.whats-new-mobile {
+  text-align: right;
+  width: 80%;
+}
+
+.weekly-deal-title-mobile {
+  margin-top: 2rem;
+  text-align: left;
+  width: 80%;
+  padding: 0.5rem 1rem;
+  background-color: #F1D7A7;
+  color: #25303A;
+}
+
 #profile-page .profile {
   padding: 10px;
 }
@@ -40,7 +95,8 @@ a {
   -o-object-fit: cover;
      object-fit: cover;
 }
-#profile-page .profile h1, #profile-page .profile h2 {
+#profile-page .profile h1,
+#profile-page .profile h2 {
   padding: 10px;
 }
 #profile-page .profile h2 {
@@ -218,7 +274,8 @@ a {
   padding: 10px 20px;
   background-color: #25303A;
 }
-#product-page #mobile-buy-button div h2, #product-page #mobile-buy-button div p {
+#product-page #mobile-buy-button div h2,
+#product-page #mobile-buy-button div p {
   display: inline;
 }
 #product-page #mobile-buy-button div h2 {
@@ -306,4 +363,4 @@ a {
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-}
+}/*# sourceMappingURL=App.css.map */

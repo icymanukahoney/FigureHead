@@ -1,298 +1,378 @@
 // --------------- Mobile Responsive
 // Breakpoint bookmark
-@media only screen and (min-width: 360px) {.query{padding: 0;}}
+@media only screen and (min-width: 360px) {
+  .query {
+    padding: 0;
+  }
+}
 
 // General
 body {
-    background-image: linear-gradient(to right, $gradient-light, $gradient-dark);
-    color: $main-gold!important;
-    text-align: center;
+  background-image: linear-gradient(to right, $gradient-light, $gradient-dark);
+  color: $main-gold !important;
+  text-align: center;
 }
 
 * {
-    font-family: $font;
+  font-family: $font;
 }
 
-p, a {
-    font-size: $mobile-medium-size;
+p,
+a {
+  font-size: $mobile-medium-size;
 }
 a {
-    color: $main-gold!important;
+  color: $main-gold !important;
 }
 
 .bg-image {
-    background-image: url('/img/bg-image.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-    margin-bottom: -150px;
+  background-image: url("/img/bg-image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  margin-bottom: -150px;
 }
 
-// Header
+// Header / nav
+nav {
+  .nav-flex {
+    .logo {
+      img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+  }
+}
 
 // Footer
 
-// Home Page
+// Home Page ---------------------------------------------------
+.background-desktop {
+  display: none;
+}
+.advert-container {
+  display: none;
+}
+.header-desktop {
+  display: none;
+}
+
+.background-mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.logo-hero-mobile {
+  margin-top: 2rem;
+  img {
+    width: 50%;
+  }
+}
+
+.whats-new-title-mobile {
+  margin-top: 2rem;
+  text-align: left;
+  width: 80%;
+  padding: 0.5rem 1rem;
+  background-color: $main-gold;
+  color: $main-blue;
+}
+.whats-new-mobile {
+  text-align: right;
+  width: 80%;
+}
+
+.weekly-deal-title-mobile {
+  margin-top: 2rem;
+  text-align: left;
+  width: 80%;
+  padding: 0.5rem 1rem;
+  background-color: $main-gold;
+  color: $main-blue;
+}
 
 // Profile Page
 #profile-page {
-    .profile {
-        padding: 10px;
+  .profile {
+    padding: 10px;
 
-        .profile-img {width: 200px; height: 200px; object-fit: cover;}
-        h1, h2 {padding: 10px;}
-        h2 {padding-bottom: 20px;}
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+    h1,
+    h2 {
+      padding: 10px;
+    }
+    h2 {
+      padding-bottom: 20px;
+    }
+  }
+
+  #profile-listings {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    padding: 5px;
+    row-gap: 10px;
+
+    .profile-card {
+      position: relative;
+      border: 4px solid $main-gold;
+      background-color: $main-blue;
     }
 
-    #profile-listings {
+    .card-content {
+      min-height: 230px;
+      height: 100%;
+      width: 150px;
+
+      display: flex;
+      flex-direction: column;
+
+      text-align: left;
+      padding: 5px 5px 10px;
+
+      .listing-image {
+        text-align: center;
+        overflow: hidden;
+        flex-grow: 1;
+
         display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        flex-direction: row;
+        justify-content: center;
+        align-items: center;
 
-        padding: 5px;
-        row-gap: 10px;
+        padding: 0 0 5px;
 
-        .profile-card {
-            position: relative;
-            border: 4px solid $main-gold;
-            background-color: $main-blue;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
+      }
 
-        .card-content {
-            min-height: 230px;
-            height: 100%;
-            width: 150px;
+      .listing-title {
+        margin-bottom: 10px;
+        font-size: $mobile-large-size;
+        font-weight: $bold-font;
+      }
 
-            display: flex;
-            flex-direction: column;
+      .listing-price {
+        font-size: $mobile-x-large-size;
+      }
 
-            text-align: left;
-            padding: 5px 5px 10px;
-
-            .listing-image {
-                text-align: center;
-                overflow: hidden;
-                flex-grow: 1;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                padding: 0 0 5px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-
-            .listing-title {
-                margin-bottom: 10px;
-                font-size: $mobile-large-size;
-                font-weight: $bold-font;
-            }
-
-            .listing-price {
-                font-size: $mobile-x-large-size;
-            }
-
-            .listing-category {
-                text-transform: capitalize;
-            }
-        }
-
-        .profile-listing-edit-delete {
-            font-size: $mobile-large-size;
-
-            position: absolute;
-            bottom: 10px;
-            right: 0;
-            * {
-                margin-right: 10px;
-            }
-        }
-
-        #add-listing {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 5px;
-
-            #add-icon {
-                font-size: 28px;
-                margin-top: 10px;
-            }
-        }
+      .listing-category {
+        text-transform: capitalize;
+      }
     }
+
+    .profile-listing-edit-delete {
+      font-size: $mobile-large-size;
+
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      * {
+        margin-right: 10px;
+      }
+    }
+
+    #add-listing {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 5px;
+
+      #add-icon {
+        font-size: 28px;
+        margin-top: 10px;
+      }
+    }
+  }
 }
 
 // SingleProduct Page
 #product-page {
+  #product {
+    position: relative;
+    margin-top: 200px;
+    padding: 20px;
 
-    #product {
-        position: relative;
-        margin-top: 200px;
-        padding: 20px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-areas: "h2 h2" "details aside" "description description";
+    row-gap: 15px;
 
-        display: grid;
-        grid-template-columns: 80% 20%;
-        grid-template-areas: 'h2 h2' 'details aside' 'description description';
-        row-gap: 15px;
+    .product-img {
+      position: absolute;
+      top: -215px;
+      left: calc(50% - 62.5px);
+      z-index: 1;
 
-        .product-img {
-            position: absolute;
-            top: -215px;
-            left: calc(50% - 62.5px);
-            z-index: 1;
-            
-            padding: 5px;
-            background: $main-gold;
-            border-radius: 20px;
-            
-            height: 200px;
-            width: 125px;
-            object-fit: cover;
+      padding: 5px;
+      background: $main-gold;
+      border-radius: 20px;
 
-            &.main-img {z-index: 2;}
+      height: 200px;
+      width: 125px;
+      object-fit: cover;
 
-            &.second-img {
-                left: calc(20% - 50px);
-                transform: rotate(-11.25deg);
-                height: 175px;
-                width: 111.25px;
-            }
+      &.main-img {
+        z-index: 2;
+      }
 
-            &.third-img {
-                left: calc(77% - 50px);
-                transform: rotate(11.25deg);
-                height: 175px;
-                width: 111.25px;
-            }
-        }
+      &.second-img {
+        left: calc(20% - 50px);
+        transform: rotate(-11.25deg);
+        height: 175px;
+        width: 111.25px;
+      }
 
-        h2 {
-            grid-area: h2;
-        }
-        .product-details {
-            grid-area: details;
-            text-align: left;
-            text-transform: capitalize;
-        }
-        .product-aside {
-            grid-area: aside;
-        }
-        .product-description {
-            grid-area: description;
-        }
+      &.third-img {
+        left: calc(77% - 50px);
+        transform: rotate(11.25deg);
+        height: 175px;
+        width: 111.25px;
+      }
     }
 
-    #comment-flex {
+    h2 {
+      grid-area: h2;
+    }
+    .product-details {
+      grid-area: details;
+      text-align: left;
+      text-transform: capitalize;
+    }
+    .product-aside {
+      grid-area: aside;
+    }
+    .product-description {
+      grid-area: description;
+    }
+  }
+
+  #comment-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    padding: 5px;
+
+    .comment-header {
+      text-decoration: underline;
+      display: inline;
+      margin-right: 5px;
+    }
+
+    i {
+      font-size: $mobile-medium-size;
+    }
+
+    .comment {
+      display: grid;
+      grid-template-columns: 100px calc(100% - 100px);
+      grid-template-rows: auto;
+      width: 80%;
+
+      background-color: $main-blue;
+      border-radius: 15px;
+
+      .comment-author {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px 10px;
 
-        padding: 5px;
-
-        .comment-header {
-            text-decoration: underline;
-            display: inline;
-            margin-right: 5px;
+        img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
         }
+      }
+      .comment-content {
+        text-align: left;
+        padding: 10px;
+        padding-left: 0;
+      }
+    }
+  }
 
-        i {
-            font-size: $mobile-medium-size;
-        }
+  #mobile-buy-button {
+    position: sticky;
+    bottom: 0;
+    left: 0;
 
-        .comment {
-            display: grid;
-            grid-template-columns: 100px calc(100% - 100px);
-            grid-template-rows: auto;
-            width: 80%;
+    width: 100%;
+    height: auto;
 
-            background-color: $main-blue;
-            border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 
-            .comment-author {
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                padding: 20px 10px;
+    background-color: $main-blue;
 
-                img {
-                    width: 50px;
-                    height: 50px;
-                    object-fit: cover;
-                }
-            }
-            .comment-content {
-                text-align: left;
-                padding: 10px;
-                padding-left: 0;
-            }
-        }
+    div h2,
+    div p {
+      display: inline;
     }
 
-    #mobile-buy-button {
-        position: sticky;
-        bottom: 0;
-        left: 0;
-
-        width: 100%;
-        height: auto;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-
-        background-color: $main-blue;
-
-        div h2, div p {display: inline;}
-
-        div h2 {margin-right: 5px;}
-
-        button {
-            border: 3px solid $black;
-            background-color: $main-gold;
-            border-radius: 15px;
-            padding: 10px 15px;
-
-            * {color: $black!important;}
-            
-            h2 {font-weight: $regular-font!important;}
-            
-            i {margin-right: 10px;}
-        }
+    div h2 {
+      margin-right: 5px;
     }
+
+    button {
+      border: 3px solid $black;
+      background-color: $main-gold;
+      border-radius: 15px;
+      padding: 10px 15px;
+
+      * {
+        color: $black !important;
+      }
+
+      h2 {
+        font-weight: $regular-font !important;
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
 }
 
 // Payment Page
 
 @media screen and (min-width: 540px) {
-// General
+  // General
 
-// Header
+  // Header
 
-// Footer
+  // Footer
 
-// Home Page
+  // Home Page
 
-// Profile Page
+  // Profile Page
 
-// SingleProduct Page
+  // SingleProduct Page
 
-// Payment Page
+  // Payment Page
 
-#profile-page {
-
+  #profile-page {
     #profile-listings {
-        display: flex;
-        justify-content: center;
-        gap: 15px 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px 30px;
     }
-}
+  }
 }
