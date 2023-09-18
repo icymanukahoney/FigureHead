@@ -41,6 +41,48 @@ nav #nav-top {
   text-transform: uppercase;
   width: 100%;
 }
+nav #nav-top .fa-bars {
+  cursor: pointer;
+}
+nav #nav-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  background-color: #32404E;
+}
+nav #nav-bottom .login-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  color: #F1D7A7;
+  font-weight: 700;
+}
+nav #nav-bottom .signup-btn {
+  margin-left: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  color: #F1D7A7;
+  font-weight: 700;
+}
+nav #nav-bottom .profile-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  color: #F1D7A7;
+}
+nav #nav-bottom .logout-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  color: #F1D7A7;
+  font-weight: 700;
+}
 nav .nav-flex .nav-title {
   margin-left: -30px;
 }
@@ -82,8 +124,6 @@ footer #footer-grid .brands {
   left: 0;
   z-index: -1;
   width: 100%;
-}
-.background-mobile img {
   overflow: hidden;
 }
 
@@ -193,6 +233,35 @@ footer #footer-grid .brands {
   -o-object-fit: fill;
      object-fit: fill;
   margin-bottom: 10px;
+}
+
+.login-wrapper {
+  position: absolute;
+  padding: 20px;
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-wrapper .login-container {
+  background-color: #25303A;
+  border-radius: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.login-wrapper .login-container h2 {
+  text-transform: uppercase;
+}
+.login-wrapper .login-container form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-container {
+  background-color: #25303A;
 }
 
 #profile-page .profile {
@@ -408,6 +477,13 @@ footer #footer-grid .brands {
 }
 
 @media screen and (min-width: 540px) {
+  .weekly-deal-info-two {
+    font-weight: 300;
+    font-style: italic;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    margin-bottom: 100px;
+  }
   #profile-page #profile-listings {
     display: flex;
     justify-content: center;

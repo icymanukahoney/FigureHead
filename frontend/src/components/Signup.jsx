@@ -48,7 +48,7 @@ const Signup = (props) => {
   };
 
   return (
-    <div>
+    <div className='signup-container'>
       <p onClick={handleClose}>X</p>
       <form className="signup" onSubmit={handleSubmit}>
         <label>
