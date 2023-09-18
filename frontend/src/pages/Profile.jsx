@@ -9,6 +9,8 @@ const Profile = () => {
   const {dispatch} = useProductsContext()
   const [products, setProducts] = useState([])
 
+  const localUser = JSON.parse(localStorage.getItem("user"))
+
   const navigate = useNavigate();
 
   const routeChange = (product) => {
@@ -58,12 +60,18 @@ const Profile = () => {
     fetchProducts()
   }
 
+  const getEmailCharactersBeforeAtSymbol = (email) => {
+    const delimiter = '@';
+    const parts = email.split(delimiter);
+    return parts[0];
+  };
+
   return (
     <div id="profile-page">
       <div className='bg-image'></div>
       <div className='profile'>
         <img className='profile-img' src="/img/logo.png" alt="Profile Picture test." />
-        <h1>ACCOUNT NAME</h1>
+        <h1 className="profile-account-name">{getEmailCharactersBeforeAtSymbol(localUser.email)}</h1>
         <h2>Your products:</h2>
         <div id="profile-listings">
           {products && products.map((product) => {

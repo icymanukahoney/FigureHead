@@ -8,6 +8,9 @@ const SingleProduct = () => {
   const navigate = useNavigate()
   const {dispatch} = useProductsContext()
 
+  const currentUser = JSON.parse(localStorage.getItem("user")) 
+  const currentUserEmail = currentUser.email
+
   const handleBuy = () => {
     navigate('/payment');
   }
@@ -119,6 +122,7 @@ const SingleProduct = () => {
           <p>{product?.categories.join(", ")}</p>
         </div>
         <div className="product-aside">
+          <div className="desktop" onClick={handleBuy}><button className="buy-now-button"><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
           <i className="fa fa-heart"></i>
         </div>
         <div className="product-description">
@@ -134,12 +138,14 @@ const SingleProduct = () => {
 
       {isWritingNewComment && 
       <div className="new-comment-inputs">
-        <p onClick={closeAddNewComment}>X</p>
-        <label>Comment Text:</label>
+        <i className="fa fa-x new-comment-close" onClick={closeAddNewComment}></i>
+        <label>Write New Comment:</label>
         <textarea value={commentText} 
         onChange={(e) => {setCommentText(e.target.value)}}
-        placeholder="Enter your comment message here"></textarea>
-        <button onClick={handleAddCommentSubmit}>Add Comment</button>
+        placeholder="Enter your comment message here"
+        rows={3}></textarea>
+        <div><button className="comment-button" 
+        onClick={handleAddCommentSubmit}>Add Comment</button></div>
       </div>
       }
 
@@ -154,15 +160,16 @@ const SingleProduct = () => {
               <p className='date'>{formatDistanceToNow(new Date (comment.createdAt), {includeSeconds: true,})}{" "}ago</p>
             </div>
           </div>
-          <div className="comment-content">
-            <p onClick={closeEditComment}>X</p>
-            <textarea value={editCommentText}
+          <div className="comment-content edit-comment">
+            <i className="fa fa-x edit-comment-close" onClick={closeEditComment}></i>
+            <label>Edit Comment:</label>
+            <textarea className="edit-comment-content" value={editCommentText}
             onChange={(e) => {setEditCommentText(e.target.value)}}
-            placeholder="Enter your comment message here"></textarea>
-            <button onClick={() => {handleEditCommentSubmit(comment)}}>Edit Comment</button>
+            placeholder="Enter your comment message here"
+            rows={3}></textarea>
+            <div><button className="comment-button" 
+            onClick={() => {handleEditCommentSubmit(comment)}}>Post Edit</button></div>
           </div>
-          <p onClick={() => {handleEditComment(comment)}}>Edit</p>
-          <p onClick={() => {deleteComment(comment)}}>Delete</p>
 
           </> : <>
 
@@ -176,9 +183,10 @@ const SingleProduct = () => {
           <div className="comment-content">
             <p>{comment.text}</p>
           </div>
-          <p onClick={() => {handleEditComment(comment)}}>Edit</p>
-          <p onClick={() => {deleteComment(comment)}}>Delete</p>
-
+            {currentUserEmail === comment.user_id && <>
+              <div className="comment-edit"><p onClick={() => {handleEditComment(comment)}}>Edit</p></div>
+              <div className="comment-delete"><p onClick={() => {deleteComment(comment)}}>Delete</p></div>
+            </>}
           </> }
         </div>
         ))
@@ -187,9 +195,9 @@ const SingleProduct = () => {
         )}
       </div>
 
-      <div id="mobile-buy-button">
+      <div id="mobile-buy-button" className="mobile">
         <div><h2>${product?.price}.00</h2><p>inc GST</p></div>
-        <div onClick={handleBuy}><button><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
+        <div onClick={handleBuy}><button className="buy-now-button"><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
       </div>
     </div>
   )
