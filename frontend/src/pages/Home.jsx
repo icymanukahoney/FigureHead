@@ -19,6 +19,16 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [likedProducts, setLikedProducts] = useState({});
+
+  // like button click
+  const handleLikeClick = (productId) => {
+    // Toggle the liked state of the product
+    setLikedProducts((prevLikedProducts) => ({
+      ...prevLikedProducts,
+      [productId]: !prevLikedProducts[productId],
+    }));
+  };
 
   // Fetch product data from api call
   useEffect(() => {
@@ -27,8 +37,14 @@ const Home = () => {
         const response = await axios.get("http://localhost:4000/api/products");
         const product = response.data;
 
+        const initialLikedProducts = {};
+        product.forEach((p) => {
+          initialLikedProducts[p._id] = false; // Initialize all products as unliked
+        });
+
         // update the products state with the products data
         setProducts(product);
+        setLikedProducts(initialLikedProducts);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -52,23 +68,22 @@ const Home = () => {
       // If no category is selected, set filteredProducts to all products
       setFilteredProducts(products);
     } else {
-      // Filter through the array only if selectedCategory is defined and not empty
-      const filtered =
-        products.length > 0
-          ? products.filter((product) => {
-              // Split the categories string into an array because thats how its structured in the database.
-              const productCategories = product.categories[0]
-                .split(",")
-                // cat is short for categories
-                .map((cat) => cat.trim());
-
-              // Check if the selectedCategory is in the product's categories
-              return productCategories.some((cat) =>
-                cat.toLowerCase().includes(selectedCategory.toLowerCase())
-              );
-            })
-          : [];
-      setFilteredProducts(filtered);
+      // make an empty array to sort the desired cards into
+      let filteredItems = [];
+      // For each product from our api call, do the following
+      products.length > 0 &&
+        products.map((product) => {
+          // for each product from our api call, do the following
+          product.categories.map((category) => {
+            // for each category that is inside of this product, see if it match the desired category
+            if (category === selectedCategory) {
+              // if it matches, push to the empty array
+              filteredItems.push(product);
+            }
+          });
+        });
+      // set the filtered products to match the desired outcome
+      setFilteredProducts(filteredItems);
     }
   }, [selectedCategory, products]);
 
@@ -146,7 +161,7 @@ const Home = () => {
           <option value="">Categories</option>
           <option value="game">Game</option>
           <option value="movie">Movie</option>
-          <option value="tv show">Tv Show</option>
+          <option value="tv">Tv</option>
           <option value="anime">Anime</option>
           <option value="cartoon">Cartoon</option>
           <option value="comic">Comic</option>
@@ -159,8 +174,8 @@ const Home = () => {
       {/* DISPLAY CATEGORY BUTTONS WHEN THE SCREEN IS AT THE DESIRED WIDTH*/}
       {/* category button on tablet to desktop width only */}
       <>
-      {/* this should be display none */}
-        <h2 className="btn-categories-title">CATEGORIES</h2> 
+        {/* this should be display none */}
+        <h2 className="btn-categories-title">CATEGORIES</h2>
         {/* this should be display none */}
         <div className="category-buttons-grid">
           <div className="button-item">
@@ -192,7 +207,7 @@ const Home = () => {
 
           <div className="button-item">
             <button
-              className={selectedCategory === "tv show" ? "selected" : ""}
+              className={selectedCategory === "tv" ? "selected" : ""}
               onClick={() => handleCategoryClick("tv show")}
             >
               Tv Show
@@ -253,18 +268,23 @@ const Home = () => {
       <div className="product-grid">
         {filteredProducts.map((product, index) => (
           <div className="product-item" key={index}>
-            <Link key={product._id} to={`/SingleProduct/${product._id}`}>
+            <Link key={product._id} to={`/products/${product._id}`}>
               <img
                 src={`http://localhost:4000/public${product.images[0]}`}
                 alt="image of product"
               />
               <h3>{product.title}</h3>
-              <p>{product.categories}</p>
+              <p>{product?.categories.join(", ")} </p>
               <p>${product.price}</p>
-              <i className="fa-regular fa-heart"></i>
-              {/* could hide lined heart above when clicked and display solid heart commented out below */}
-              {/* <i class="fa-solid fa-heart"></i> */}
             </Link>
+            <i
+              className={
+                likedProducts[product._id]
+                  ? "fa-solid fa-heart"
+                  : "fa-regular fa-heart"
+              }
+              onClick={() => handleLikeClick(product._id)}
+            ></i>
           </div>
         ))}
       </div>
