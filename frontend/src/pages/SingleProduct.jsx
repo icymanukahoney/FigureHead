@@ -15,29 +15,29 @@ const SingleProduct = () => {
   const {id} = useParams()
   const [product, setProduct] = useState(null)
 
-  useEffect(() => {
-    axios.get(`http://localhost:4000/api/products/${id}`)
-    .then((res) => {
-      console.log(res.data);
-      setProduct(res.data)
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-  }, [])
+  const fetchProducts = () => {
+    useEffect(() => {
+      axios.get(`http://localhost:4000/api/products/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setProduct(res.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    }, [])
+  }
+  
+  fetchProducts()
 
   // Commenting
   const [isWritingNewComment, setIsWritingNewComment] = useState(null);
   const [isEditingComment, setIsEditingComment] = useState(null)
   const [commentText, setCommentText] = useState("");
+  const [editCommentText, setEditCommentText] = useState(commentText);
 
-  const handleAddNewComment = async () => {
-    setIsWritingNewComment(true)
-  }
-
-  const closeAddNewComment = () => {
-    setIsWritingNewComment(false)
-  }
+  const handleAddNewComment = () => {setIsWritingNewComment(true)}
+  const closeAddNewComment = () => {setIsWritingNewComment(null)}
 
   const handleAddCommentSubmit = async () => {
     try {
@@ -59,11 +59,39 @@ const SingleProduct = () => {
 
         setCommentText("");
         setIsWritingNewComment(false)
+        fetchProducts()
       }
     } catch (error) {
       console.error("Error Adding Comment: ", error);
     }
   };
+
+  const handleEditComment = () => {setIsEditingComment(true)}
+  const closeEditComment = () => {setIsEditingComment(null)}
+
+  const handleEditCommentSubmit = async (comment) => {
+    console.log("clicked edit comment");
+    try {
+      const response = await axios.patch(
+        `http://localhost:4000/api/comments/products/${product._id}/comments/${comment._id}`, 
+        {
+          text: editCommentText,
+        }
+      );
+      console.log("axios pass");
+
+      if (response.status === 201) {
+        console.log("edit response 201");
+
+        setCommentText("");
+        setEditCommentText("");
+        closeEditComment(null)
+        fetchProducts()
+      }
+    } catch (error) {
+      console.error("Error Updating Workout: ", error);
+    }
+  }
 
   const deleteComment = async (comment) => {
     console.log(product._id);
@@ -76,7 +104,7 @@ const SingleProduct = () => {
       const json = await response.data
       if (response.status === 201) {
         console.log(json);
-        dispatch({ type: "UPDATE_PRODUCT", payload: product.comments});
+        fetchProducts()
       }
     } catch (error) {
       console.error("Error Deleting Comment: ", error);
@@ -122,13 +150,34 @@ const SingleProduct = () => {
         <textarea value={commentText} 
         onChange={(e) => {setCommentText(e.target.value)}}
         placeholder="Enter your comment message here"></textarea>
-        <button onClick={handleAddCommentSubmit}>Comment</button>
+        <button onClick={handleAddCommentSubmit}>Add Comment</button>
       </div>
       }
 
-      {product?.comments.length !== 0 ? (product?.comments.map((comment) => ( 
+      {product?.comments.length !== 0 ? (product?.comments.map((comment) => (
         <div className="comment" key={comment._id}>
-          <div className="comment-author">
+          {isEditingComment ? <>
+
+            <div className="comment-author">
+            <div>
+              <img src="/img/logo.png" alt="Profile Picture" />
+              <p className='author'>{comment.user_id}</p>
+              <p className='date'>{formatDistanceToNow(new Date (comment.createdAt), {includeSeconds: true,})}{" "}ago</p>
+            </div>
+          </div>
+          <div className="comment-content">
+            <p onClick={closeEditComment}>X</p>
+            <textarea value={editCommentText}
+            onChange={(e) => {setEditCommentText(e.target.value)}}
+            placeholder="Enter your comment message here"></textarea>
+            <button onClick={() => {handleEditCommentSubmit(comment)}}>Edit Comment</button>
+          </div>
+          <p onClick={() => {handleEditComment(comment)}}>Edit</p>
+          <p onClick={() => {deleteComment(comment)}}>Delete</p>
+
+          </> : <>
+
+            <div className="comment-author">
             <div>
               <img src="/img/logo.png" alt="Profile Picture" />
               <p className='author'>{comment.user_id}</p>
@@ -138,7 +187,10 @@ const SingleProduct = () => {
           <div className="comment-content">
             <p>{comment.text}</p>
           </div>
+          <p onClick={() => {handleEditComment(comment)}}>Edit</p>
           <p onClick={() => {deleteComment(comment)}}>Delete</p>
+
+          </> }
         </div>
         ))
         ) : (

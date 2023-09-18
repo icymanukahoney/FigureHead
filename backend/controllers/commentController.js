@@ -79,7 +79,7 @@ const editComment = async (req, res) => {
             return res.status(404).json({ error: "Comment not found" });
         }
 
-        res.status(200).json(comment);
+        res.status(201).json(comment);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Server Error" });
@@ -108,7 +108,7 @@ const deleteComment = async (req, res) => {
 
         await product.save();
 
-        res.status(200).json(comment);
+        res.status(201).json(comment);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Server Error" });
