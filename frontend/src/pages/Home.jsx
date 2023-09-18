@@ -125,7 +125,7 @@ const Home = () => {
         <h3 className="whats-new-info-two">GOOD SMILE COMPANY</h3>
       </div>
       {/* give weekly-deal-title width of around 70% keep left aligned and use padding to create background color.  */}
-      <h3 className="weekly-deal-title">WEEKLY DEAL !</h3>
+      <h3 className="weekly-deal-title-mobile">WEEKLY DEAL !</h3>
       {/* right align text in weekly-deal-mobile div below. give width of div around 70% */}
       <div className="weekly-deal-mobile">
         <h2 className="weekly-deal-info-one">$10</h2>
@@ -252,7 +252,10 @@ const Home = () => {
         {filteredProducts.map((product, index) => (
           <div className="product-item" key={index}>
             <Link key={product._id} to={`/SingleProduct/${product._id}`}>
-              <img src={product.images} alt="image of product" />
+              <img
+                src={`http://localhost:4000/public${product.images[0]}`}
+                alt="image of product"
+              />
               <h3>{product.title}</h3>
               <p>{product.categories}</p>
               <p>${product.price}</p>
