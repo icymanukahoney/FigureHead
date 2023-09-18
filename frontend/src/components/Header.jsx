@@ -1,6 +1,7 @@
 // This will be throwing an error for the time being till fixed
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Login from "./Login";
 import Signup from "./Signup";
@@ -33,13 +34,21 @@ const Header = () => {
 
   // This is setting the state for the nav bottom to true if the hamburger is clicked
   const handleClick = () => {
-    setIsMenuOpen(true);
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  
-  const localUser = JSON.parse(localStorage.getItem("user"))
-  const handleProfileClick = () => {
-    const user_id = localUser.email
+  const getUser = async () => {
+    const localUser = JSON.parse(localStorage.getItem("user"))
+    console.log(localUser);
+    const response = await axios.get(
+      `http://localhost:4000/api/user?email=${encodeURIComponent(localUser.email)}`
+    )
+
+    return (response.data._id)
+  }
+
+  const handleProfileClick = async () => {
+    const user_id = await getUser()
     const path = `/profile/${user_id}`
     navigate(path)
   }
@@ -71,7 +80,7 @@ const Header = () => {
               <button className="profile-btn"
               onClick={handleProfileClick}>
                 <i className="fa-solid fa-circle-user"></i> {/* This is the Profile Icon */}
-                {localUser.email} {/* Here is placeholder user name */}
+                NAME {/* Here is placeholder user name */}
               </button>
         
               <button className="logout-btn"
