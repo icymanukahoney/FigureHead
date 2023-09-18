@@ -20,9 +20,9 @@ const Footer = () => {
 
           {/* This is for the socials  */}
           <div className="footer-flex">
-            <i className="fa-brands fa-facebook"></i>
-            <i className="fa-brands fa-instagram"></i>
-            <i className="fa-brands fa-x-twitter"></i>
+            <i className="fa-brands fa-facebook brands"></i>
+            <i className="fa-brands fa-instagram brands"></i>
+            <i className="fa-brands fa-x-twitter brands"></i>
           </div>
 
           {/* This is for the Collect & Connect */}

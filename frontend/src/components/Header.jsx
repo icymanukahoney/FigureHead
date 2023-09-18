@@ -58,7 +58,7 @@ const Header = () => {
         <Link className="logo" to="/">
           <img src="/img/logo.png" alt="FigureHeads Logo"/> {/* This is the Logo */}
         </Link>
-        <h1>FigureHead</h1>
+        <h1 className="nav-title">FigureHead</h1>
         <i className="fa-solid fa-bars" onClick={handleClick}></i> {/* This is the Hamburger Menu */}
       </div>
 
