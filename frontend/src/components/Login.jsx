@@ -49,7 +49,7 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <div className='login-container'>
       <p onClick={handleClose}>X</p>
       <form className="login" onSubmit={handleSubmit}>
         <label>
