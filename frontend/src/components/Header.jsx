@@ -37,8 +37,8 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const getUser = async () => {
-    const localUser = JSON.parse(localStorage.getItem("user"))
+  const localUser = JSON.parse(localStorage.getItem("user"))
+  const getUserId = async () => {
     console.log(localUser);
     const response = await axios.get(
       `http://localhost:4000/api/user?email=${encodeURIComponent(localUser.email)}`
@@ -48,7 +48,7 @@ const Header = () => {
   }
 
   const handleProfileClick = async () => {
-    const user_id = await getUser()
+    const user_id = await getUserId()
     const path = `/profile/${user_id}`
     navigate(path)
   }
@@ -57,7 +57,7 @@ const Header = () => {
   const getEmailCharactersBeforeAtSymbol = (email) => {
     const delimiter = '@';
     const parts = email.split(delimiter);
-    return parts.length > 1 ? parts[0] : '';
+    return parts[0];
   };
 
   return (
@@ -80,7 +80,7 @@ const Header = () => {
               <button className="profile-btn"
               onClick={handleProfileClick}>
                 <i className="fa-solid fa-circle-user"></i> {/* This is the Profile Icon */}
-                NAME {/* Here is placeholder user name */}
+                {getEmailCharactersBeforeAtSymbol(localUser.email)} {/* Here is placeholder user name */}
               </button>
         
               <button className="logout-btn"
