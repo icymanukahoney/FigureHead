@@ -235,13 +235,29 @@ footer #footer-grid .brands {
   margin-bottom: 10px;
 }
 
-.login-container {
-  position: fixed;
-  width: 80%;
-  height: 50%;
-  z-index: 1; /* Ensure the modal is above other content */
-  margin-top: 20px;
+.login-wrapper {
+  position: absolute;
+  padding: 20px;
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-wrapper .login-container {
   background-color: #25303A;
+  border-radius: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.login-wrapper .login-container h2 {
+  text-transform: uppercase;
+}
+.login-wrapper .login-container form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
 .signup-container {
