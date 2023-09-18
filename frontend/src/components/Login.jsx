@@ -49,24 +49,27 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-      <p onClick={handleClose}>X</p>
-      <form className="login" onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <p className="error">{emailError}</p>
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <p className="error">{passwordError}</p>
-        </label>
-        {errorMessage && <p className="error">{errorMessage}</p>}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Login...' : 'Login'}
-        </button>
-      </form>
+    <div className='login-wrapper'>
+      <div className='login-container'>
+        <p onClick={handleClose}>X</p>
+        <h2>Log in</h2>
+        <form className="login" onSubmit={handleSubmit}>
+          <label>
+            Email:
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <p className="error">{emailError}</p>
+          </label>
+          <label>
+            Password:
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <p className="error">{passwordError}</p>
+          </label>
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? 'Login...' : 'Login'}
+          </button>
+        </form>
+      </div>      
     </div>
   );
 };

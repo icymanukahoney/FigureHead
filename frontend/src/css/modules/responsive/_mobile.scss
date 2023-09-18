@@ -31,6 +31,8 @@ a {color: $main-gold !important;}
 
 // Header / nav
 nav {
+  // position: absolute;
+  // width: 100%;
   #nav-top {
     display: flex;
     justify-content: space-between;
@@ -39,6 +41,54 @@ nav {
     background-color: $main-blue;
     text-transform: uppercase;
     width: 100%;
+
+    .fa-bars {
+      cursor: pointer;
+    }
+  }
+
+  #nav-bottom {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: $accent-blue;
+
+      .login-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        color: $main-gold;
+        font-weight: $bold-font;
+      }
+
+      .signup-btn {
+        margin-left: 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        color: $main-gold;
+        font-weight: $bold-font;
+      }
+
+      .profile-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        color: $main-gold;
+      }
+
+      .logout-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        color: $main-gold;
+        font-weight: $bold-font;
+      }
   }
 
   .nav-flex {
@@ -92,10 +142,7 @@ footer {
   left: 0;
   z-index: -1;
   width: 100%;
-
-    img {
-      overflow: hidden;
-    }
+  overflow: hidden;
 }
 
 .logo-hero-mobile {
@@ -211,6 +258,41 @@ footer {
       margin-bottom: 10px;
     }
   }
+}
+
+.login-wrapper {
+  position: absolute;
+  padding: 20px;
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-container {
+    background-color: $main-blue;
+    border-radius: 10px;
+    // border: 5px;
+    // border-color: $accent-gold;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    h2 {
+      text-transform: uppercase;
+    }
+  
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+}
+
+.signup-container {
+  background-color: $main-blue;
 }
 
 // Profile Page
@@ -548,7 +630,13 @@ footer {
 // Footer
 
 // Home Page
-
+  .weekly-deal-info-two {
+    font-weight: $light-font;
+    font-style: italic;
+    color: $white;
+    letter-spacing: 1px;
+    margin-bottom: 100px;
+  }
 // Profile Page
 #profile-page {
   #profile-listings {
@@ -565,6 +653,9 @@ footer {
     }
   }
 }
+
+  // Profile Page
+
 
 // SingleProduct Page
 #product-page {
