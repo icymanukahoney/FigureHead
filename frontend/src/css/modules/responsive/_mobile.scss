@@ -12,18 +12,10 @@ body {
   color: $main-gold !important;
   text-align: center;
 }
+* {font-family: $font;}
 
-* {
-  font-family: $font;
-}
-
-p,
-a {
-  font-size: $mobile-medium-size;
-}
-a {
-  color: $main-gold !important;
-}
+p, a {font-size: $mobile-medium-size;}
+a {color: $main-gold !important;}
 
 .bg-image {
   background-image: url("/img/bg-image.jpg");
@@ -31,6 +23,10 @@ a {
   background-position: center;
   height: 300px;
   margin-bottom: -150px;
+}
+
+.desktop {
+  display: none;
 }
 
 // Header / nav
@@ -301,6 +297,9 @@ footer {
 
 // Profile Page
 #profile-page {
+
+  .profile-account-name {text-transform: uppercase;}
+  
   .profile {
     padding: 10px;
 
@@ -411,7 +410,7 @@ footer {
     padding: 20px;
 
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 50% 50%;
     grid-template-areas: "h2 h2" "details aside" "description description";
     row-gap: 15px;
 
@@ -458,6 +457,12 @@ footer {
     }
     .product-aside {
       grid-area: aside;
+      text-align: right;
+
+      i.fa-heart {
+        margin-top: 5px;
+        margin-right: 20px;
+      }
     }
     .product-description {
       grid-area: description;
@@ -482,16 +487,39 @@ footer {
       font-size: $mobile-medium-size;
     }
 
-    .comment {
-      display: grid;
-      grid-template-columns: 100px calc(100% - 100px);
-      grid-template-rows: auto;
+    .new-comment-inputs {
       width: 80%;
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px 20px;
 
       background-color: $main-blue;
       border-radius: 15px;
 
+      .new-comment-close {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+    }
+
+    .comment {
+      display: grid;
+      grid-template-columns: 100px calc(100% - 100px);
+      grid-template-rows: auto;
+
+      grid-template-areas: "author content" "edit content" "delete content";
+      width: 80%;
+
+      background-color: $main-blue;
+      border-radius: 15px;
+      padding-bottom: 10px;
+
       .comment-author {
+        grid-area: author;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -504,10 +532,46 @@ footer {
         }
       }
       .comment-content {
+        grid-area: content;
         text-align: left;
         padding: 10px;
         padding-left: 0;
+
+        &.edit-comment {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          padding: 15px;
+          padding-left: 25px;
+          .edit-comment-close {
+            position: absolute;
+            top: 10px;
+            left: 7px;
+          }
+        }
       }
+
+      .comment-edit {grid-area: edit; margin-bottom: 5px;}
+      .comment-delete {grid-area: delete;}
+      .comment-edit p, .comment-delete p {
+        display: inline-block;
+        padding: 2px 10px;
+        background-color: $main-gold;
+        color: $main-blue;
+        border-radius: 5px;
+      }
+    }
+
+    .comment-button {
+      background-color: $main-gold;
+      color: $main-blue;
+
+      padding: 5px 10px;
+
+      border: none;
+      border-radius: 10px;
     }
   }
 
@@ -534,24 +598,24 @@ footer {
     div h2 {
       margin-right: 5px;
     }
+  }
 
-    button {
-      border: 3px solid $black;
-      background-color: $main-gold;
-      border-radius: 15px;
-      padding: 10px 15px;
+  .buy-now-button {
+    border: 3px solid $black;
+    background-color: $main-gold;
+    border-radius: 15px;
+    padding: 10px 15px;
 
-      * {
-        color: $black !important;
-      }
+    * {
+      color: $black !important;
+    }
 
-      h2 {
-        font-weight: $regular-font !important;
-      }
+    h2 {
+      font-weight: $regular-font !important;
+    }
 
-      i {
-        margin-right: 10px;
-      }
+    i {
+      margin-right: 10px;
     }
   }
 }
@@ -559,14 +623,13 @@ footer {
 // Payment Page
 
 @media screen and (min-width: 540px) {
-  // General
+// General
 
-  // Header
+// Header
 
-  // Footer
+// Footer
 
-  // Home Page
-
+// Home Page
   .weekly-deal-info-two {
     font-weight: $light-font;
     font-style: italic;
@@ -574,18 +637,58 @@ footer {
     letter-spacing: 1px;
     margin-bottom: 100px;
   }
+// Profile Page
+#profile-page {
+  #profile-listings {
+    display: flex;
+    justify-content: center;
+    gap: 15px 30px;
+    .profile-card {
+      .card-content {
+        width: 180px;
+      }
+      #add-listing {
+        width: 180px;
+      }
+    }
+  }
+}
 
   // Profile Page
 
-  // SingleProduct Page
 
-  // Payment Page
+// SingleProduct Page
+#product-page {
+  #product {
+    width: 80%;
+    margin: 200px auto 0;
 
-  #profile-page {
-    #profile-listings {
-      display: flex;
-      justify-content: center;
-      gap: 15px 30px;
+    .product-img {
+      &.second-img {left: calc(50% - 150px);}
+      &.third-img {left: calc(50% + 40px);}
     }
   }
+
+  #comment-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    padding: 5px;
+
+    .comment-header {
+      text-decoration: underline;
+      display: inline;
+      margin-right: 5px;
+    }
+
+    i {
+      font-size: $mobile-medium-size;
+    }
+  }
+}
+
+// Payment Page
+
 }

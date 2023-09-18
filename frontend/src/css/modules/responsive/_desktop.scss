@@ -5,6 +5,8 @@ p {
     font-size: $desktop-small-size;
 }
 
+.desktop {display: block;}
+.mobile {display: none!important;}
 // Header
 
 // Footer
@@ -25,7 +27,13 @@ p {
             min-height: 350px;
             width: 250px;
 
+            .card-content {
+                width: 100%;
+            }
+
             .listing-title {font-size: $desktop-large-size;}
+
+            .listing-image {margin: 0 auto;}
 
             .profile-listing-edit-delete {
                 font-size: $desktop-medium-size;
@@ -37,20 +45,28 @@ p {
                     margin-right: 15px;
                 }
             }
-        }
 
-        #add-listing {
-            font-size: $desktop-medium-size;
-
-            #add-icon {
-                font-size: 40px;
-                margin-top: 10px;
+            #add-listing {
+                width: 100%;
+                font-size: $desktop-medium-size;
+    
+                #add-icon {
+                    font-size: 40px;
+                    margin-top: 10px;
+                }
             }
         }
     }
 }
 
 // SingleProduct Page
+#product-page {
+    #comment-flex {
+        .comment {
+            grid-template-columns: 25% 75%;
+        }
+    }
+}
 
 // Payment Page
 

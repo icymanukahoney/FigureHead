@@ -10,14 +10,31 @@
 
 // Profile Page
 #profile-page {
-
     .profile {
         padding: 20px 30px;
+    }
+
+    #profile-listings {
+        .card-content {
+            .listing-image {
+                height: 200px;
+            }
+        }
     }
 }
 
 // SingleProduct Page
+#product-page {
+    #product {
+      width: 60%;
+    }
 
+    #comment-flex {
+        .comment, .new-comment-inputs {
+            width: 60%;
+        }
+    }
+}
 // Payment Page
 
 }
