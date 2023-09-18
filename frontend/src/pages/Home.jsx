@@ -159,7 +159,9 @@ const Home = () => {
       {/* DISPLAY CATEGORY BUTTONS WHEN THE SCREEN IS AT THE DESIRED WIDTH*/}
       {/* category button on tablet to desktop width only */}
       <>
-        <h3>CATEGORIES</h3>
+      {/* this should be display none */}
+        <h2 className="btn-categories-title">CATEGORIES</h2> 
+        {/* this should be display none */}
         <div className="category-buttons-grid">
           <div className="button-item">
             <button
@@ -244,7 +246,7 @@ const Home = () => {
         </div>
       </>
 
-      <p>
+      <p className="showing-item-list">
         SHOWING: {filteredProducts.length} of {filteredProducts.length}
       </p>
 
