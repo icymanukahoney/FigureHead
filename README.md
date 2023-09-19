@@ -103,6 +103,14 @@ Routes and controllers are fundamental components in the architecture of web app
 
 *It is a popular JavaScript library for parsing, manipulating, and formatting dates and times.*
 
+5. **In our project, we incorporated [Font Awesome](https://fontawesome.com) icons by including the Font Awesome script directly in the HTML file. We utilized the following script tag to access the Font Awesome icons:**
+
+```HTML
+
+<script src="https://kit.fontawesome.com/0bacbf6a27.js" crossorigin="anonymous"><script>
+```
+
+*This script tag allows us to access and use Font Awesome icons without the need to install a dedicated npm package. Font Awesome provides a convenient way to enhance the visual appeal and functionality of our web application through its extensive collection of icons.*
 
 
 ## :dizzy: The dynamic api call with code snippet and explanation how these work in the app.
