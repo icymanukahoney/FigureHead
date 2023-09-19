@@ -211,7 +211,6 @@ footer #footer-grid .brands {
 }
 .product-grid .product-item {
   width: calc(50% - 10px); /* Display two cards in a row with some spacing */
-  height: 50%;
   padding: 10px;
   background-color: #25303A;
   box-shadow: 4px 4px 20px #25303A;
@@ -240,19 +239,23 @@ footer #footer-grid .brands {
 }
 
 .login-wrapper {
-  position: absolute;
+  position: fixed;
   padding: 20px;
   width: 100vw;
-  height: 20vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
 }
 .login-wrapper .login-container {
   background-color: #25303A;
   border-radius: 10px;
   padding-left: 50px;
   padding-right: 50px;
+  border: 5px #F1D7A7 solid;
 }
 .login-wrapper .login-container h2 {
   text-transform: uppercase;

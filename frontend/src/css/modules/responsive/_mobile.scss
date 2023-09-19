@@ -229,9 +229,9 @@ footer {
   justify-content: space-between;
   padding: 10px;
 
+
   .product-item {
     width: calc(50% - 10px); /* Display two cards in a row with some spacing */
-    height: 50%;
     padding: 10px;
     background-color: $main-blue;
     box-shadow: 4px 4px 20px $main-blue;
@@ -264,19 +264,23 @@ footer {
 }
 
 .login-wrapper {
-  position: absolute;
+  position: fixed;
   padding: 20px;
   width: 100vw;
-  height: 20vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
 
   .login-container {
     background-color: $main-blue;
     border-radius: 10px;
     padding-left: 50px;
     padding-right: 50px;
+    border: 5px $main-gold solid;
 
     h2 {
       text-transform: uppercase;
