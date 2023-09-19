@@ -121,21 +121,18 @@ footer #footer-grid .brands {
   display: none;
 }
 
-.background-mobile {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  overflow: hidden;
+.mobile-advert-wrapper {
+  padding-top: 2em;
+  height: calc(710px - 2em);
+  background-image: url("/img/backgroundcoins.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.logo-hero-mobile {
-  margin-top: 2rem;
-}
 .logo-hero-mobile img {
-  width: 50%;
-  margin-bottom: 20px;
+  width: 180px;
+  margin-bottom: 30px;
 }
 
 .whats-new-title-mobile {
@@ -177,7 +174,10 @@ footer #footer-grid .brands {
   font-style: italic;
   color: #FFFFFF;
   letter-spacing: 1px;
-  margin-bottom: 180px;
+}
+
+.mobile-categories-wrapper {
+  padding-top: 30px;
 }
 
 .categories-container-mobile select {
@@ -226,20 +226,17 @@ footer #footer-grid .brands {
   color: #FAF2D7;
   text-align: left;
 }
-.product-grid .product-item .fa-heart {
-  text-align: right;
+.product-grid .product-item .product-label-grid {
+  display: grid;
+  grid-template-columns: 1fr 12px;
 }
 .product-grid .product-item img {
   width: 100%;
-  height: 50%;
+  height: 200px;
   border-radius: 10px;
-  -o-object-fit: fill;
-     object-fit: fill;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-bottom: 10px;
-}
-
-#profile-page .profile-account-name {
-  text-transform: uppercase;
 }
 
 .login-wrapper {
@@ -262,15 +259,18 @@ footer #footer-grid .brands {
 }
 .login-wrapper .login-container form {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .signup-container {
   background-color: #25303A;
 }
 
+#profile-page .profile-account-name {
+  text-transform: uppercase;
+}
 #profile-page .profile {
   padding: 10px;
 }
@@ -506,6 +506,7 @@ footer #footer-grid .brands {
   border-radius: 10px;
 }
 #product-page #mobile-buy-button {
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   left: 0;

@@ -136,20 +136,19 @@ footer {
   display: none;
 }
 
-.background-mobile {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  overflow: hidden;
+.mobile-advert-wrapper {
+  padding-top: 2em;
+  height: calc(710px - 2em);
+  background-image: url("/img/backgroundcoins.jpg");
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .logo-hero-mobile {
-  margin-top: 2rem;
   img {
-    width: 50%;
-    margin-bottom: 20px;
+    width: 180px;
+    margin-bottom: 30px;
   }
 }
 
@@ -191,7 +190,10 @@ footer {
   font-style: italic;
   color: $white;
   letter-spacing: 1px;
-  margin-bottom: 180px;
+}
+
+.mobile-categories-wrapper {
+  padding-top: 30px;
 }
 
 .categories-container-mobile {
@@ -246,15 +248,16 @@ footer {
       text-align: left;
     }
 
-    .fa-heart {
-      text-align: right;
+    .product-label-grid {
+      display: grid;
+      grid-template-columns: 1fr 12px;
     }
     
     img {
       width: 100%;
-      height: 50%;
+      height: 200px;
       border-radius: 10px;
-      object-fit: fill;
+      object-fit: cover;
       margin-bottom: 10px;
     }
   }
@@ -272,8 +275,6 @@ footer {
   .login-container {
     background-color: $main-blue;
     border-radius: 10px;
-    // border: 5px;
-    // border-color: $accent-gold;
     padding-left: 50px;
     padding-right: 50px;
 
@@ -283,9 +284,9 @@ footer {
   
     form {
       display: flex;
-      flex-wrap: wrap;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
   }
 

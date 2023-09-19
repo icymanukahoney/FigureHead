@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 // import components
 
 // import images
-import backgroundMobile from "/img/backgroundcoins.jpg";
 import LogoText from "/img/LogoText.png";
 import backgroundDesktop from "/img/gundamWeb.jpg";
 import whatsNewImage from "/img/NiaWeb.png";
@@ -91,12 +90,6 @@ const Home = () => {
     <>
       {/* background image - whats new advert - weekly deal advert */}
       {/* background will be position absolute top 0 an left 0 so the logo-hero can be easily positioned*/}
-      <div className="background-mobile">
-        <img src={backgroundMobile} alt="background-coins-mobile" />
-      </div>
-      <div className="logo-hero-mobile">
-        <img src={LogoText} alt="hero-logo-withText" />
-      </div>
 
       {/* DESKTOP / WIDER SCREEN ONLY HERO IMAGE  */}
       <div className="background-desktop">
@@ -131,43 +124,52 @@ const Home = () => {
         </div>
       </div>
 
-      {/* give whats-new-title width of 70% keep left aligned and use padding to create background color.  */}
-      <h3 className="whats-new-title-mobile">WHATS NEW !</h3>
-      {/* right align text in whats-new-mobile div below. give width of div around 70% */}
-      <div className="whats-new-mobile">
-        <h2 className="whats-new-info-one">NIA</h2>
-        <h2 className="whats-new-info-one">"Xenoblade Chronicles 2"</h2>
-        <h3 className="whats-new-info-two">GOOD SMILE COMPANY</h3>
+      <div className="mobile-advert-wrapper">
+        <div className="logo-hero-mobile">
+          <img src={LogoText} alt="hero-logo-withText" />
+        </div>
+
+        {/* give whats-new-title width of 70% keep left aligned and use padding to create background color.  */}
+        <h3 className="whats-new-title-mobile">WHATS NEW !</h3>
+        {/* right align text in whats-new-mobile div below. give width of div around 70% */}
+        <div className="whats-new-mobile">
+          <h2 className="whats-new-info-one">NIA</h2>
+          <h2 className="whats-new-info-one">"Xenoblade Chronicles 2"</h2>
+          <h3 className="whats-new-info-two">GOOD SMILE COMPANY</h3>
+        </div>
+        {/* give weekly-deal-title width of around 70% keep left aligned and use padding to create background color.  */}
+        <h3 className="weekly-deal-title-mobile">WEEKLY DEAL !</h3>
+        {/* right align text in weekly-deal-mobile div below. give width of div around 70% */}
+        <div className="weekly-deal-mobile">
+          <h2 className="weekly-deal-info-one">$10</h2>
+          <h2 className="weekly-deal-info-one">GIFT VOUCHER</h2>
+          {/* font for info-two needs to be italic or light italic whichever looks best font size should be low (14 on figma) up to you */}
+          <p className="weekly-deal-info-two">
+            With your first plushie listing this week!
+          </p>
+        </div>        
       </div>
-      {/* give weekly-deal-title width of around 70% keep left aligned and use padding to create background color.  */}
-      <h3 className="weekly-deal-title-mobile">WEEKLY DEAL !</h3>
-      {/* right align text in weekly-deal-mobile div below. give width of div around 70% */}
-      <div className="weekly-deal-mobile">
-        <h2 className="weekly-deal-info-one">$10</h2>
-        <h2 className="weekly-deal-info-one">GIFT VOUCHER</h2>
-        {/* font for info-two needs to be italic or light italic whichever looks best font size should be low (14 on figma) up to you */}
-        <p className="weekly-deal-info-two">
-          With your first plushie listing this week!
-        </p>
-      </div>
+
       {/* Handle category selection */}
       {/* categories drop down select */}
       {/* mobile only needs to be hidden at tablet length. */}
-      <div className="categories-container-mobile">
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="">Categories</option>
-          <option value="game">Game</option>
-          <option value="movie">Movie</option>
-          <option value="tv">Tv</option>
-          <option value="anime">Anime</option>
-          <option value="cartoon">Cartoon</option>
-          <option value="comic">Comic</option>
-          <option value="plushie">Plushie</option>
-          <option value="other">Other</option>
-        </select>
+      <div className="mobile-categories-wrapper">
+        <div className="categories-container-mobile">
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">Categories</option>
+            <option value="game">Game</option>
+            <option value="movie">Movie</option>
+            <option value="tv">Tv</option>
+            <option value="anime">Anime</option>
+            <option value="cartoon">Cartoon</option>
+            <option value="comic">Comic</option>
+            <option value="plushie">Plushie</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
       </div>
 
       {/* START OF BUTTON CATEGORIES FOR DESKTOP!!! */}
@@ -274,17 +276,23 @@ const Home = () => {
                 alt="image of product"
               />
               <h3>{product.title}</h3>
-              <p>{product?.categories.join(", ")} </p>
-              <p>${product.price}</p>
+              <div className="product-label-grid">
+                <div>
+                  <p>{product?.categories.join(", ")} </p>
+                  <p>${product.price}</p>
+                </div>
+                <div>
+                  <i
+                    className={
+                      likedProducts[product._id]
+                        ? "fa-solid fa-heart"
+                        : "fa-regular fa-heart"
+                    }
+                    onClick={() => handleLikeClick(product._id)}
+                  ></i>                
+                </div>
+              </div>
             </Link>
-            <i
-              className={
-                likedProducts[product._id]
-                  ? "fa-solid fa-heart"
-                  : "fa-regular fa-heart"
-              }
-              onClick={() => handleLikeClick(product._id)}
-            ></i>
           </div>
         ))}
       </div>
