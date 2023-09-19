@@ -39,7 +39,6 @@ const Header = () => {
 
   const localUser = JSON.parse(localStorage.getItem("user"))
   const getUserId = async () => {
-    console.log(localUser);
     const response = await axios.get(
       `http://localhost:4000/api/user?email=${encodeURIComponent(localUser.email)}`
     )

@@ -27,6 +27,16 @@ const AddProduct = (props) => {
     }
   }
 
+  const handleCancel = () => {
+    setTitle("")
+    setDesc("")
+    setPrice("")
+    setImages([])
+    setSelectedCategories([])
+
+    props.onFormSubmit();
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -85,28 +95,28 @@ const AddProduct = (props) => {
 
   return (
     <div id="add-product-modal" className="add-edit-modals">
-      <form onSubmit={handleSubmit}>
-        <h2>ADD LISTING</h2>
-        <div>
+      <form>
+        <h2>Add Product</h2>
+        <div className="input-div">
           <label>Name *</label>
           <input type="text" placeholder="Add Name Here"
           onChange={(e) => setTitle(e.target.value)}
           value={title} required />
         </div>
-        <div>
+        <div className="input-div">
           <label>Description</label>
-          <p><textarea cols="30" rows="10" placeholder="Add Description Here"
+          <p><textarea rows="10" placeholder="Add Description Here"
           onChange={(e) => setDesc(e.target.value)}
           value={desc} >
           </textarea></p>
         </div>
-        <div>
+        <div className="input-div">
           <label>Price *</label>
           <input type="number" placeholder="$0.00" 
           onChange={(e) => setPrice(e.target.value)}
           value={price} required />
         </div>
-        <div>
+        <div className="input-div">
           <label>Images (Up to three) *</label>
           <input 
           type="file" 
@@ -114,37 +124,55 @@ const AddProduct = (props) => {
           multiple
           onChange={(e) => setImages([...e.target.files])}/>
         </div>
-        <div>
+        <div className="category-div">
           <label>Categories *</label>
           <div className="category-flex">
+
             <div>
               <input type="checkbox" name="category" value="anime"
               onChange={handleCategoryChange}
               checked={selectedCategories.includes("anime")} /><label>Anime</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="cartoon"
               onChange={handleCategoryChange}
               checked={selectedCategories.includes("cartoon")} /><label>Cartoon</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="comic"
               onChange={handleCategoryChange}
               checked={selectedCategories.includes("comic")} /><label>Comic</label>
             </div>
+
             <div>
-              <input type="checkbox" name="category" value="game"
-              onChange={handleCategoryChange}
-              checked={selectedCategories.includes("game")} /><label>Game</label>
+            <input type="checkbox" name="category" value="game"
+            onChange={handleCategoryChange}
+            checked={selectedCategories.includes("game")} /><label>Game</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="movie"
               onChange={handleCategoryChange}
               checked={selectedCategories.includes("movie")} /><label>Movie</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="tv"
               onChange={handleCategoryChange}
-              checked={selectedCategories.includes("tv")} /><label>TV Show</label>
+              checked={selectedCategories.includes("tv")} /><label>TV</label>
             </div>
-            <div>
-              <button>SUBMIT</button>
-            </div>
-            {error && <div className="error">{error}</div>}
+     
           </div>
         </div>
+        <div>
+          <button className="form-button cancel" 
+          type="button" onClick={handleCancel}>CANCEL</button>
+          <button className="form-button submit" 
+          type="button" onClick={handleSubmit}>SUBMIT</button>
+        </div>
+        {error && <div className="error">{error}</div>}
       </form>
     </div>
   )
