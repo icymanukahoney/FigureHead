@@ -309,6 +309,7 @@ footer #footer-grid .brands {
   width: 150px;
   display: flex;
   flex-direction: column;
+  gap: 5px;
   text-align: left;
   padding: 5px 5px 10px;
 }
@@ -319,7 +320,7 @@ footer #footer-grid .brands {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0 5px;
+  border-radius: 10px;
 }
 #profile-page #profile-listings .card-content .listing-image img {
   width: 100%;
@@ -357,6 +358,67 @@ footer #footer-grid .brands {
 #profile-page #profile-listings #add-listing #add-icon {
   font-size: 28px;
   margin-top: 10px;
+}
+
+.add-edit-modals {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+}
+.add-edit-modals form {
+  width: 80%;
+  border: 2px solid #F1D7A7;
+  border-radius: 10px;
+  background-color: #25303A;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.add-edit-modals form .input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.add-edit-modals form .input-div input, .add-edit-modals form .input-div p, .add-edit-modals form .input-div div {
+  width: 80%;
+}
+.add-edit-modals form .input-div textarea {
+  width: 100%;
+}
+.add-edit-modals form .category-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  padding: 5px;
+  margin: 0 auto;
+}
+.add-edit-modals form .category-flex div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.add-edit-modals form .form-button {
+  border: none;
+  background-color: #F1D7A7;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #010101 !important;
+  font-weight: 400 !important;
+}
+.add-edit-modals form .form-button.submit {
+  font-weight: 900 !important;
+  border: 2px solid #010101;
+  margin-left: 20px;
 }
 
 #product-page #product {
@@ -509,7 +571,6 @@ footer #footer-grid .brands {
   border-radius: 10px;
 }
 #product-page #mobile-buy-button {
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -563,6 +624,9 @@ footer #footer-grid .brands {
   #profile-page #profile-listings .profile-card #add-listing {
     width: 180px;
   }
+  .add-edit-modals .category-flex {
+    width: 60%;
+  }
   #product-page #product {
     width: 80%;
     margin: 200px auto 0;
@@ -595,6 +659,28 @@ footer #footer-grid .brands {
   }
   #profile-page #profile-listings .card-content .listing-image {
     height: 200px;
+  }
+  .add-edit-modals form .category-div {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+  }
+  .add-edit-modals form .input-div {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+  }
+  .add-edit-modals form .input-div label {
+    text-align: right;
+  }
+  .add-edit-modals form .input-div input, .add-edit-modals form .input-div p, .add-edit-modals form .input-div textarea, .add-edit-modals form .input-div div {
+    width: 100%;
+  }
+  .add-edit-modals form .category-flex {
+    justify-content: flex-start;
+    width: 100%;
+    gap: 8px;
+  }
+  .add-edit-modals form .category-flex div {
+    gap: 2px;
   }
   #product-page #product {
     width: 60%;

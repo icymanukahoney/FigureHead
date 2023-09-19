@@ -8,8 +8,21 @@ const SingleProduct = () => {
   const navigate = useNavigate()
   const {dispatch} = useProductsContext()
 
-  const currentUser = JSON.parse(localStorage.getItem("user")) 
+  let currentUser = JSON.parse(localStorage.getItem("user")) 
+  if (!currentUser) currentUser = {email: ""}
   const currentUserEmail = currentUser.email
+
+  // Like Button
+  const [likedProducts, setLikedProducts] = useState({});
+
+  // like button click
+  const handleLikeClick = (productId) => {
+    // Toggle the liked state of the product
+    setLikedProducts((prevLikedProducts) => ({
+      ...prevLikedProducts,
+      [productId]: !prevLikedProducts[productId],
+    }));
+  };
 
   const handleBuy = () => {
     navigate('/payment');
@@ -123,7 +136,9 @@ const SingleProduct = () => {
         </div>
         <div className="product-aside">
           <div className="desktop" onClick={handleBuy}><button className="buy-now-button"><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
-          <i className="fa fa-heart"></i>
+          <i 
+          className={likedProducts[product?._id] ? "fa-solid fa-heart" : "fa-regular fa-heart"} 
+          onClick={() => handleLikeClick(product?._id)}></i>
         </div>
         <div className="product-description">
           <p>{product?.desc}</p>

@@ -80,21 +80,21 @@ const EditProduct = (props) => {
   return (
     <div id="add-product-modal" className="add-edit-modals">
       <form>
-        <h2>Edit LISTING</h2>
-        <div>
+        <h2>Edit "{product.title}"</h2>
+        <div className="input-div">
           <label>Name *</label>
           <input type="text" placeholder="Edit Name Here"
           onChange={(e) => setEditTitle(e.target.value)}
           value={editTitle} required />
         </div>
-        <div>
+        <div className="input-div">
           <label>Description</label>
-          <p><textarea cols="30" rows="10" placeholder="Edit Description Here"
+          <p><textarea rows="10" placeholder="Edit Description Here"
           onChange={(e) => setEditDesc(e.target.value)}
           value={editDesc} >
           </textarea></p>
         </div>
-        <div>
+        <div className="input-div">
           <label>Price *</label>
           <input type="text" placeholder="$0.00" 
           onChange={(e) => setEditPrice(e.target.value)}
@@ -111,35 +111,52 @@ const EditProduct = (props) => {
         <div>
           <label>Categories *</label>
           <div className="category-flex">
+
             <div>
               <input type="checkbox" name="category" value="anime"
               onChange={handleCategoryChange}
               checked={editSelectedCategories.includes("anime")} /><label>Anime</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="cartoon"
               onChange={handleCategoryChange}
               checked={editSelectedCategories.includes("cartoon")} /><label>Cartoon</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="comic"
               onChange={handleCategoryChange}
               checked={editSelectedCategories.includes("comic")} /><label>Comic</label>
             </div>
+            
             <div>
               <input type="checkbox" name="category" value="game"
               onChange={handleCategoryChange}
               checked={editSelectedCategories.includes("game")} /><label>Game</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="movie"
               onChange={handleCategoryChange}
               checked={editSelectedCategories.includes("movie")} /><label>Movie</label>
+            </div>
+
+            <div>
               <input type="checkbox" name="category" value="tv"
               onChange={handleCategoryChange}
-              checked={editSelectedCategories.includes("tv")} /><label>TV Show</label>
+              checked={editSelectedCategories.includes("tv")} /><label>TV</label>
             </div>
-            <div>
-              <button type="button" onClick={handleCancel}>CANCEL</button>
-              <button type="button" onClick={handleSubmit}>SUBMIT</button>
-            </div>
-            {error && <div className="error">{error}</div>}
+
           </div>
         </div>
+        <div>
+          <button className="form-button cancel" 
+          type="button" onClick={handleCancel}>CANCEL</button>
+          <button className="form-button submit" 
+          type="button" onClick={handleSubmit}>SUBMIT</button>
+        </div>
+        {error && <div className="error">{error}</div>}
       </form>
     </div>
   )
