@@ -136,20 +136,19 @@ footer {
   display: none;
 }
 
-.background-mobile {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  overflow: hidden;
+.mobile-advert-wrapper {
+  padding-top: 2em;
+  height: calc(710px - 2em);
+  background-image: url("/img/backgroundcoins.jpg");
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .logo-hero-mobile {
-  margin-top: 2rem;
   img {
-    width: 50%;
-    margin-bottom: 20px;
+    width: 180px;
+    margin-bottom: 30px;
   }
 }
 
@@ -191,7 +190,10 @@ footer {
   font-style: italic;
   color: $white;
   letter-spacing: 1px;
-  margin-bottom: 180px;
+}
+
+.mobile-categories-wrapper {
+  padding-top: 30px;
 }
 
 .categories-container-mobile {
@@ -227,9 +229,9 @@ footer {
   justify-content: space-between;
   padding: 10px;
 
+
   .product-item {
     width: calc(50% - 10px); /* Display two cards in a row with some spacing */
-    height: 50%;
     padding: 10px;
     background-color: $main-blue;
     box-shadow: 4px 4px 20px $main-blue;
@@ -246,36 +248,39 @@ footer {
       text-align: left;
     }
 
-    .fa-heart {
-      text-align: right;
+    .product-label-grid {
+      display: grid;
+      grid-template-columns: 1fr 12px;
     }
     
     img {
       width: 100%;
-      height: 50%;
+      height: 200px;
       border-radius: 10px;
-      object-fit: fill;
+      object-fit: cover;
       margin-bottom: 10px;
     }
   }
 }
 
 .login-wrapper {
-  position: absolute;
+  position: fixed;
   padding: 20px;
   width: 100vw;
-  height: 20vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
 
   .login-container {
     background-color: $main-blue;
     border-radius: 10px;
-    // border: 5px;
-    // border-color: $accent-gold;
     padding-left: 50px;
     padding-right: 50px;
+    border: 5px $main-gold solid;
 
     h2 {
       text-transform: uppercase;
@@ -283,9 +288,9 @@ footer {
   
     form {
       display: flex;
-      flex-wrap: wrap;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
   }
 
