@@ -22,7 +22,6 @@ const Home = () => {
 
   // like button click
   const handleLikeClick = (productId) => {
-    // When you click on the heart this command will stop the link from taking you to the next page
     // Toggle the liked state of the product
     setLikedProducts((prevLikedProducts) => ({
       ...prevLikedProducts,
