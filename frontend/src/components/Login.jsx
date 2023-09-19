@@ -49,26 +49,36 @@ const Login = (props) => {
   };
 
   return (
-    <div className='login-wrapper'>
-      <div className='login-container'>
-        <p onClick={handleClose}>X</p>
+    <div className="login-wrapper">
+      <div className="login-container">
+        <p className="close-btn" onClick={handleClose}>X</p>
         <h2>Log in</h2>
+
         <form className="login" onSubmit={handleSubmit}>
-          <label>
-            Email:
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <p className="error">{emailError}</p>
-          </label>
-          <label>
-            Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <p className="error">{passwordError}</p>
-          </label>
+
+          <div className="email-input">
+            <label>
+              <h4>Email:</h4>
+              <input placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <p className="error">{emailError}</p>
+            </label>
+          </div>
+
+          <div className="password-input">
+            <label>
+              <h4>Password:</h4>
+              <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <p className="error">{passwordError}</p>
+            </label>
+          </div>
           {errorMessage && <p className="error">{errorMessage}</p>}
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Login...' : 'Login'}
+          
+          <p className="create-account-btn">Not registered? <span>Create an account</span></p>
+          <button className="login-submit-btn" type="submit" disabled={isLoading}>
+            {isLoading ? "Login..." : "Log in"}
           </button>
         </form>
+        
       </div>      
     </div>
   );

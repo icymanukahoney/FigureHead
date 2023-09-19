@@ -35,7 +35,14 @@ a {
   display: none;
 }
 
+nav {
+  z-index: 10;
+  padding-top: 80px;
+}
 nav #nav-top {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,8 +84,11 @@ nav #nav-bottom .profile-btn {
   border: none;
   text-transform: uppercase;
   color: #F1D7A7;
+  font-weight: 700;
 }
 nav #nav-bottom .logout-btn {
+  margin-left: 20px;
+  margin-right: 10px;
   cursor: pointer;
   background: none;
   border: none;
@@ -249,22 +259,163 @@ footer #footer-grid .brands {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 10;
 }
 .login-wrapper .login-container {
   background-color: #25303A;
   border-radius: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
+  height: 400px;
+  width: 300px;
   border: 5px #F1D7A7 solid;
+}
+.login-wrapper .login-container .close-btn {
+  float: right;
+  margin-right: 20px;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FAF2D7;
 }
 .login-wrapper .login-container h2 {
   text-transform: uppercase;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-bottom: 30px;
 }
-.login-wrapper .login-container form {
+.login-wrapper .login-container .login h4 {
+  float: left;
+  margin-left: 23px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+.login-wrapper .login-container .login .email-input {
+  margin-bottom: 30px;
+}
+.login-wrapper .login-container .login .password-input {
+  margin-bottom: 30px;
+}
+.login-wrapper .login-container .login input {
+  width: 250px;
+  height: 27px;
+  border-radius: 15px;
+  padding-left: 10px;
+}
+.login-wrapper .login-container .login ::-moz-placeholder {
+  opacity: 70%;
+}
+.login-wrapper .login-container .login :-ms-input-placeholder {
+  opacity: 70%;
+}
+.login-wrapper .login-container .login ::placeholder {
+  opacity: 70%;
+}
+.login-wrapper .login-container .login .error {
+  color: red;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.login-wrapper .login-container .login .create-account-btn {
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+.login-wrapper .login-container .login .create-account-btn span {
+  text-decoration: underline;
+}
+.login-wrapper .login-container .login .login-submit-btn {
+  width: 130px;
+  height: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  background-color: #FAF2D7;
+  cursor: pointer;
+}
+
+.signup-wrapper {
+  position: fixed;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 10;
+}
+.signup-wrapper .signup-container {
+  background-color: #25303A;
+  border-radius: 10px;
+  height: 400px;
+  width: 300px;
+  border: 5px #F1D7A7 solid;
+}
+.signup-wrapper .signup-container .close-btn {
+  float: right;
+  margin-right: 20px;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FAF2D7;
+}
+.signup-wrapper .signup-container h2 {
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+.signup-wrapper .signup-container .signup h4 {
+  float: left;
+  margin-left: 23px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+.signup-wrapper .signup-container .signup .email-input {
+  margin-bottom: 30px;
+}
+.signup-wrapper .signup-container .signup .password-input {
+  margin-bottom: 30px;
+}
+.signup-wrapper .signup-container .signup input {
+  width: 250px;
+  height: 27px;
+  border-radius: 15px;
+  padding-left: 10px;
+}
+.signup-wrapper .signup-container .signup ::-moz-placeholder {
+  opacity: 70%;
+}
+.signup-wrapper .signup-container .signup :-ms-input-placeholder {
+  opacity: 70%;
+}
+.signup-wrapper .signup-container .signup ::placeholder {
+  opacity: 70%;
+}
+.signup-wrapper .signup-container .signup .error {
+  color: red;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.signup-wrapper .signup-container .signup .login-account-btn {
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+.signup-wrapper .signup-container .signup .login-account-btn span {
+  text-decoration: underline;
+}
+.signup-wrapper .signup-container .signup .signup-submit-btn {
+  width: 130px;
+  height: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  background-color: #FAF2D7;
+  cursor: pointer;
 }
 
 .signup-container {
@@ -612,6 +763,9 @@ footer #footer-grid .brands {
     color: #FFFFFF;
     letter-spacing: 1px;
     margin-bottom: 100px;
+  }
+  .product-item {
+    width: calc(30% + 5px) !important;
   }
   #profile-page #profile-listings {
     display: flex;
