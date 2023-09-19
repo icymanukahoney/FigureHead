@@ -48,24 +48,35 @@ const Signup = (props) => {
   };
 
   return (
-    <div className='signup-container'>
-      <p onClick={handleClose}>X</p>
-      <form className="signup" onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <p className="error">{emailError}</p>
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <p className="error">{passwordError}</p>
-        </label>
-        {errorMessage && <p className="error">{errorMessage}</p>}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Signing up...' : 'Signup'}
-        </button>
-      </form>
+    <div className="signup-wrapper">
+      <div className='signup-container'>
+        <p className="close-btn" onClick={handleClose}>X</p>
+        <h2>Sign up</h2>
+        <form className="signup" onSubmit={handleSubmit}>
+
+          <div className="email-input">
+            <label>
+              <h4>Email:</h4>
+              <input placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <p className="error">{emailError}</p>
+            </label>
+          </div>
+          
+          <div className="password-input">
+            <label>
+              <h4>Password:</h4>
+              <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <p className="error">{passwordError}</p>
+            </label>
+          </div>
+          {errorMessage && <p className="error">{errorMessage}</p>}
+
+          <p className="login-account-btn">Have an account? <span>Log in</span></p>
+          <button className="signup-submit-btn" type="submit" disabled={isLoading}>
+            {isLoading ? 'Signing up...' : 'Sign up'}
+          </button>
+        </form>
+      </div>  
     </div>
   );
 };

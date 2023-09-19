@@ -31,9 +31,13 @@ a {color: $main-gold !important;}
 
 // Header / nav
 nav {
-  // position: absolute;
-  // width: 100%;
+  z-index: 10;
+  padding-top: 80px;
+  
   #nav-top {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -79,9 +83,12 @@ nav {
         border: none;
         text-transform: uppercase;
         color: $main-gold;
+        font-weight: $bold-font;
       }
 
       .logout-btn {
+        margin-left: 20px;
+        margin-right: 10px;
         cursor: pointer;
         background: none;
         border: none;
@@ -274,26 +281,181 @@ footer {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 10;
 
   .login-container {
     background-color: $main-blue;
     border-radius: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
+    height: 400px;
+    width: 300px;
     border: 5px $main-gold solid;
+
+    .close-btn {
+      float: right;
+      margin-right: 20px;
+      margin-top: 15px;
+      font-size: $mobile-x-large-size;
+      font-weight: $bold-font;
+      color: $accent-gold;
+    }
 
     h2 {
       text-transform: uppercase;
+      margin-top: 30px;
+      margin-left: 40px;
+      margin-bottom: 30px;
     }
   
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      flex-wrap: wrap;
+    .login {
+
+      h4 {
+        float: left;
+        margin-left: 23px;
+        margin-bottom: 5px;
+        font-weight: $regular-font;
+      }
+
+      .email-input {
+        margin-bottom: 30px;
+      }
+
+      .password-input {
+        margin-bottom: 30px;
+      }
+
+      input {
+        width: 250px;
+        height: 27px;
+        border-radius: 15px;
+        padding-left: 10px;
+      }
+
+      ::placeholder {
+        opacity: 70%;
+      }
+
+      .error {
+        color: red;
+        margin-top: 10px;
+        font-weight: $bold-font;
+      }
+
+      .create-account-btn {
+        margin-bottom: 30px;
+        letter-spacing: 0.5px;
+
+        span {
+          text-decoration: underline;
+        }
+      }
+
+      .login-submit-btn {
+        width: 130px;
+        height: 30px;
+        text-transform: uppercase;
+        font-weight: $bold-font;
+        font-size: $mobile-x-large-size;
+        letter-spacing: 1px;
+        border-radius: 10px;
+        background-color: $accent-gold;
+        cursor: pointer;
+      }
     }
   }
+}
 
+.signup-wrapper {
+  position: fixed;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 10;
+
+  .signup-container {
+    background-color: $main-blue;
+    border-radius: 10px;
+    height: 400px;
+    width: 300px;
+    border: 5px $main-gold solid;
+
+    .close-btn {
+      float: right;
+      margin-right: 20px;
+      margin-top: 15px;
+      font-size: $mobile-x-large-size;
+      font-weight: $bold-font;
+      color: $accent-gold;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      margin-top: 30px;
+      margin-left: 40px;
+      margin-bottom: 30px;
+    }
+  
+    .signup {
+
+      h4 {
+        float: left;
+        margin-left: 23px;
+        margin-bottom: 5px;
+        font-weight: $regular-font;
+      }
+
+      .email-input {
+        margin-bottom: 30px;
+      }
+
+      .password-input {
+        margin-bottom: 30px;
+      }
+
+      input {
+        width: 250px;
+        height: 27px;
+        border-radius: 15px;
+        padding-left: 10px;
+      }
+
+      ::placeholder {
+        opacity: 70%;
+      }
+
+      .error {
+        color: red;
+        margin-top: 10px;
+        font-weight: $bold-font;
+      }
+
+      .login-account-btn {
+        margin-bottom: 30px;
+        letter-spacing: 0.5px;
+
+        span {
+          text-decoration: underline;
+        }
+      }
+
+      .signup-submit-btn {
+        width: 130px;
+        height: 30px;
+        text-transform: uppercase;
+        font-weight: $bold-font;
+        font-size: $mobile-x-large-size;
+        letter-spacing: 1px;
+        border-radius: 10px;
+        background-color: $accent-gold;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .signup-container {
@@ -642,6 +804,11 @@ footer {
     letter-spacing: 1px;
     margin-bottom: 100px;
   }
+
+  .product-item {
+    width: calc(30% - -5px) !important;
+  }
+
 // Profile Page
 #profile-page {
   #profile-listings {
