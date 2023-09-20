@@ -51,12 +51,43 @@
         width: 502px;
         height: 352px;
         position: relative;
+        margin-top: -65px;
+        overflow: visible;
 
         img {
             position: absolute;
             bottom: 0;
             left: 0;
+            // padding-left: 40px;
         }
+    }
+  }
+
+  .whats-new-title {
+    width: 170px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: #F1D7A7;
+    cursor: pointer;
+
+    h3 {
+        color: $black;
+    }
+  }
+
+  .weekly-deal-title {
+    width: 170px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: #F1D7A7;
+    cursor: pointer;
+
+    h3 {
+        color: $black;
     }
   }
 
