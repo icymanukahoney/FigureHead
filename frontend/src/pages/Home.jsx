@@ -171,7 +171,7 @@ const Home = () => {
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            <option value="">Categories</option>
+            <option value="">All Products</option>
             <option value="game">Game</option>
             <option value="movie">Movie</option>
             <option value="tv">Tv</option>

@@ -8,10 +8,9 @@ const Signup = (props) => {
   // Error messages for form validation
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   // Signup Hook
-  const { signup, isLoading } = useSignup();
+  const { signup, isLoading, error } = useSignup();
 
   const handleClose = () => {
     props.onFormSubmit();
@@ -24,7 +23,6 @@ const Signup = (props) => {
     // Clear previous error messages
     setEmailError("");
     setPasswordError("");
-    setErrorMessage("");
     
     // Validate form inputs
     if (!email) {
@@ -37,14 +35,14 @@ const Signup = (props) => {
       return;
     }
 
-    try {
       // Attempt to login with the provided email and password
-      await signup(email, password);
+    await signup(email, password);
+
+    if (!error) {
       props.onFormSubmit();
-    } catch (error) {
-      // If an error occurs during login, this error message will display
-      setErrorMessage("Signup failed. Please check if your username and password is correct."); // Change this after discussing with group
     }
+    console.log(error);
+
   };
 
   return (
@@ -69,7 +67,7 @@ const Signup = (props) => {
               <p className="error">{passwordError}</p>
             </label>
           </div>
-          {errorMessage && <p className="error">{errorMessage}</p>}
+          {error && <p className="error">{error}</p>}
 
           <p className="login-account-btn">Have an account? <span>Log in</span></p>
           <button className="signup-submit-btn" type="submit" disabled={isLoading}>
