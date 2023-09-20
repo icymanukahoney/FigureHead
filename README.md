@@ -107,7 +107,8 @@ Routes and controllers are fundamental components in the architecture of web app
 
 ```HTML
 
-<script src="https://kit.fontawesome.com/0bacbf6a27.js" crossorigin="anonymous"><script>
+<script src="https://kit.fontawesome.com/0bacbf6a27.js" crossorigin="anonymous"></script>
+
 ```
 
 *This script tag allows us to access and use Font Awesome icons without the need to install a dedicated npm package. Font Awesome provides a convenient way to enhance the visual appeal and functionality of our web application through its extensive collection of icons.*
