@@ -288,7 +288,7 @@ const Home = () => {
               <h3>{product.title}</h3>
               <div className="product-label-grid">
                 <div>
-                  <p>{product?.categories.join(", ")} </p>
+                  <p className="categories">{product?.categories.join(", ")} </p>
                   <p>${product.price}</p>
                 </div>
                 <div>
