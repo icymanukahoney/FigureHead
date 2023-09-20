@@ -8,6 +8,114 @@
 
 // Home Page
 
+.logo-hero-mobile {
+    display: none;
+}
+
+.mobile-advert-wrapper {
+    display: none;
+}
+
+.desktop-advert-wrapper {
+    background-image: url("/img/gundamWeb.jpg");
+    height: 560px; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .desktop-hero-container {
+        background-color:rgba(0 0 0 / 20%);
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .header-desktop {
+            font-size: $tablet-xx-large-size;
+            padding-top: 100px;
+        }
+    }
+}
+
+.advert-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+  }
+
+.advert-container {
+    display: block !important;
+
+    .advert-hitbox {
+        width: 502px;
+        height: 352px;
+        position: relative;
+
+        img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+  }
+
+.whats-new-title-mobile {
+    display: none;
+}
+
+.whats-new-mobile {
+    display: none;
+}
+
+.weekly-deal-title-mobile {
+    display: none;
+}
+
+.weekly-deal-mobile {
+    display: none;
+}
+
+.header-desktop {
+    display: block;
+    color: $main-gold;
+}
+
+.mobile-categories-wrapper {
+    display: none;
+}
+
+.btn-categories-title {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.category-buttons-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px 10px;
+    margin-bottom: 40px;
+
+    .button-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;        
+    }
+
+    button {
+        display: block;
+        width: 130px;
+        height: 30px;
+        text-transform: uppercase;
+        font-weight: $bold-font;
+        letter-spacing: 1px;
+        border-radius: 10px;
+        background-color: $main-gold;
+        cursor: pointer;
+    }
+}
+
 // Profile Page
 #profile-page {
     .profile {
