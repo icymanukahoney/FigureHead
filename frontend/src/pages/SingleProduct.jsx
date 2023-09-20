@@ -54,12 +54,19 @@ const SingleProduct = () => {
   const closeAddNewComment = () => {setIsWritingNewComment(null)}
 
   const handleAddCommentSubmit = async () => {
+    const getEmailCharactersBeforeAtSymbol = (email) => {
+      const delimiter = '@';
+      const parts = email.split(delimiter);
+      return parts[0];
+    };
+
+    let commentUsername = getEmailCharactersBeforeAtSymbol(currentUserEmail)
     try {
       const response = await axios.post(
         `http://localhost:4000/api/comments/products/${product._id}/comments`,
         {
           text: commentText,
-          user_id: product.user_id,
+          user_id: commentUsername,
         }
       );
 
@@ -131,7 +138,7 @@ const SingleProduct = () => {
         <h2>{product?.title}</h2>
         <div className="product-details">
           <p>Product By: {product?.user_id}</p>
-          <p>Price: ${product?.price}.00</p>
+          <p>Price: ${product?.price}</p>
           <p>{product?.categories.join(", ")}</p>
         </div>
         <div className="product-aside">
@@ -146,23 +153,25 @@ const SingleProduct = () => {
       </div>
       <div id="comment-flex">
 
-      <div 
-      onClick={handleAddNewComment}>
-        <p className="comment-header">Write a comment</p><i className="fa fa-pencil"></i>
-      </div>
+      {currentUserEmail !== "" && <>
+        <div onClick={handleAddNewComment}>
+          <p className="comment-header">Write a comment</p><i className="fa fa-pencil"></i>
+        </div>
 
-      {isWritingNewComment && 
-      <div className="new-comment-inputs">
-        <i className="fa fa-x new-comment-close" onClick={closeAddNewComment}></i>
-        <label>Write New Comment:</label>
-        <textarea value={commentText} 
-        onChange={(e) => {setCommentText(e.target.value)}}
-        placeholder="Enter your comment message here"
-        rows={3}></textarea>
-        <div><button className="comment-button" 
-        onClick={handleAddCommentSubmit}>Add Comment</button></div>
-      </div>
-      }
+        {isWritingNewComment && 
+        <div className="new-comment-inputs">
+          <i className="fa fa-x new-comment-close" onClick={closeAddNewComment}></i>
+          <label>Write New Comment:</label>
+          <textarea value={commentText} 
+          onChange={(e) => {setCommentText(e.target.value)}}
+          placeholder="Enter your comment message here"
+          rows={3}></textarea>
+          <div><button className="comment-button" 
+          onClick={handleAddCommentSubmit}>Add Comment</button></div>
+        </div>
+        }
+      </>}
+      
 
       {product?.comments.length !== 0 ? (product?.comments.map((comment) => (
         <div className="comment" key={comment._id}>
@@ -211,7 +220,7 @@ const SingleProduct = () => {
       </div>
 
       <div id="mobile-buy-button" className="mobile">
-        <div><h2>${product?.price}.00</h2><p>inc GST</p></div>
+        <div><h2>${product?.price}</h2><p>inc GST</p></div>
         <div onClick={handleBuy}><button className="buy-now-button"><h2><i className="bi bi-cart"></i>BUY NOW</h2></button></div>
       </div>
     </div>

@@ -91,7 +91,7 @@ const Profile = () => {
                       <p className="listing-category">
                         {product.categories.join(", ")}
                       </p>
-                      <p className="listing-price">${product.price}.00</p>
+                      <p className="listing-price">${product.price}</p>
                     </div>
                   </div>
                   <div className="profile-listing-edit-delete">
