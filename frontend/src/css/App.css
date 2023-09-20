@@ -849,11 +849,37 @@ footer #footer-grid .brands {
     width: 502px;
     height: 352px;
     position: relative;
+    margin-top: -65px;
+    overflow: visible;
   }
   .advert-container .advert-hitbox img {
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+  .whats-new-title {
+    width: 170px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: #F1D7A7;
+    cursor: pointer;
+  }
+  .whats-new-title h3 {
+    color: #010101;
+  }
+  .weekly-deal-title {
+    width: 170px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: #F1D7A7;
+    cursor: pointer;
+  }
+  .weekly-deal-title h3 {
+    color: #010101;
   }
   .whats-new-title-mobile {
     display: none;

@@ -130,7 +130,7 @@ const Home = () => {
         </div>        
       </div>
 
-      {/* Desktop Categories */}
+      {/* this is the desktop advertising styles */}
 
       {/* <div className="advert-wrapper">
         <div className="advert-container">
@@ -142,9 +142,10 @@ const Home = () => {
             />
           </div>
 
-          {/* center h3 title text at bottom of Nia advert you may have to use a negative margin to push it slightly below  */}
-          {/* using padding and color the background to achieve the same effect as figma. */}
-          {/* <h3 className="whats-new-title">WHATS NEW !</h3>
+          <div className="whats-new-title">
+            <h3>WHATS NEW !</h3>
+          </div>
+
         </div> */}
         {/* because the plushie image has opacity on right side margin "MAY" need to be used to control spacing */}
         {/* <div className="advert-container">
@@ -154,11 +155,12 @@ const Home = () => {
               src={weeklyDeal}
               alt="plushie deal"
             />
-          </div> */}
+          </div>
 
-          {/* center h3 title text at bottom of Plushie advert you may have to use a negative margin to push it slightly below  */}
-          {/* using padding and color the background to achieve the same effect as figma. */}
-          {/* <h3 className="weekly-deal-title">WEEKLY DEAL !</h3>
+          <div className="weekly-new-title">
+            <h3>WEEKLY DEAL !</h3>
+          </div>
+
         </div>
       </div> */}
 
@@ -182,9 +184,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* START OF BUTTON CATEGORIES FOR DESKTOP!!! */}
-      {/* DISPLAY CATEGORY BUTTONS WHEN THE SCREEN IS AT THE DESIRED WIDTH*/}
-      {/* category button on tablet to desktop width only */}
+      {/* Desktop Categories */}
       <>
         {/* this should be display none */}
         <h2 className="btn-categories-title">CATEGORIES</h2>
