@@ -839,25 +839,29 @@ footer #footer-grid .brands {
     padding-top: 100px;
   }
   .advert-wrapper {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
+    display: flex !important;
+    justify-content: space-around;
   }
   .advert-container {
     display: block !important;
   }
   .advert-container .advert-hitbox {
-    width: 502px;
-    height: 352px;
+    width: 350px;
     position: relative;
-    margin-top: -65px;
+    margin-top: 160px;
     overflow: visible;
   }
   .advert-container .advert-hitbox img {
+    width: 100%;
+    padding: 10px;
     position: absolute;
     bottom: 0;
     left: 0;
   }
   .whats-new-title {
+    position: absolute;
+    top: -40px;
+    right: 90px;
     width: 170px;
     padding: 10px;
     text-transform: uppercase;
@@ -869,7 +873,10 @@ footer #footer-grid .brands {
   .whats-new-title h3 {
     color: #010101;
   }
-  .weekly-deal-title {
+  .weekly-new-title {
+    position: absolute;
+    top: -40px;
+    right: 90px;
     width: 170px;
     padding: 10px;
     text-transform: uppercase;
@@ -878,7 +885,7 @@ footer #footer-grid .brands {
     background-color: #F1D7A7;
     cursor: pointer;
   }
-  .weekly-deal-title h3 {
+  .weekly-new-title h3 {
     color: #010101;
   }
   .whats-new-title-mobile {
@@ -902,8 +909,8 @@ footer #footer-grid .brands {
   }
   .btn-categories-title {
     display: block;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
   .category-buttons-grid {
     display: grid !important;
@@ -926,6 +933,9 @@ footer #footer-grid .brands {
     border-radius: 10px;
     background-color: #F1D7A7;
     cursor: pointer;
+  }
+  .product-item {
+    padding: 30px !important;
   }
   #profile-page .profile {
     padding: 20px 30px;
