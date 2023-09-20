@@ -50,17 +50,18 @@ const SingleProduct = () => {
   const [commentText, setCommentText] = useState("");
   const [editCommentText, setEditCommentText] = useState(commentText);
 
+  const getEmailCharactersBeforeAtSymbol = (email) => {
+    const delimiter = '@';
+    const parts = email.split(delimiter);
+    return parts[0];
+  };
+
+  let commentUsername = getEmailCharactersBeforeAtSymbol(currentUserEmail)
+
   const handleAddNewComment = () => {setIsWritingNewComment(true)}
   const closeAddNewComment = () => {setIsWritingNewComment(null)}
 
   const handleAddCommentSubmit = async () => {
-    const getEmailCharactersBeforeAtSymbol = (email) => {
-      const delimiter = '@';
-      const parts = email.split(delimiter);
-      return parts[0];
-    };
-
-    let commentUsername = getEmailCharactersBeforeAtSymbol(currentUserEmail)
     try {
       const response = await axios.post(
         `http://localhost:4000/api/comments/products/${product._id}/comments`,
@@ -207,7 +208,7 @@ const SingleProduct = () => {
           <div className="comment-content">
             <p>{comment.text}</p>
           </div>
-            {currentUserEmail === comment.user_id && <>
+            {commentUsername === comment.user_id && <>
               <div className="comment-edit"><p onClick={() => {handleEditComment(comment)}}>Edit</p></div>
               <div className="comment-delete"><p onClick={() => {deleteComment(comment)}}>Delete</p></div>
             </>}
