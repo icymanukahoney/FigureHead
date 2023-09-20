@@ -13,6 +13,10 @@ p {
 
 // Home Page
 
+.product-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 // Profile Page
 #profile-page {
 

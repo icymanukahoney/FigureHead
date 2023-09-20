@@ -120,7 +120,7 @@ footer #footer-grid .brands {
   padding: 5px;
 }
 
-.background-desktop {
+.category-buttons-grid {
   display: none;
 }
 
@@ -128,7 +128,15 @@ footer #footer-grid .brands {
   display: none;
 }
 
+.advert-wrapper {
+  display: none;
+}
+
 .header-desktop {
+  display: none;
+}
+
+.background-desktop {
   display: none;
 }
 
@@ -205,29 +213,23 @@ footer #footer-grid .brands {
   display: none;
 }
 
-.category-buttons-grid {
-  display: none;
-}
-
 .showing-item-list {
   color: #FAF2D7;
   font-weight: 400;
 }
 
 .product-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
   padding: 10px;
 }
 .product-grid .product-item {
-  width: calc(50% - 10px); /* Display two cards in a row with some spacing */
+  width: 100%;
   padding: 10px;
   background-color: #25303A;
   box-shadow: 4px 4px 20px #25303A;
   border-radius: 10px;
-  margin-bottom: 20px;
-  margin-top: 15px;
 }
 .product-grid .product-item h3 {
   margin-bottom: 10px;
@@ -766,8 +768,8 @@ footer #footer-grid .brands {
     letter-spacing: 1px;
     margin-bottom: 100px;
   }
-  .product-item {
-    width: calc(30% + 5px) !important;
+  .product-grid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
   #profile-page #profile-listings {
     display: flex;
@@ -810,6 +812,95 @@ footer #footer-grid .brands {
   }
 }
 @media only screen and (min-width: 768px) {
+  .logo-hero-mobile {
+    display: none;
+  }
+  .mobile-advert-wrapper {
+    display: none;
+  }
+  .desktop-advert-wrapper {
+    background-image: url("/img/gundamWeb.jpg");
+    height: 560px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .desktop-advert-wrapper .desktop-hero-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .desktop-advert-wrapper .desktop-hero-container .header-desktop {
+    font-size: 50px;
+    padding-top: 100px;
+  }
+  .advert-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+  }
+  .advert-container {
+    display: block !important;
+  }
+  .advert-container .advert-hitbox {
+    width: 502px;
+    height: 352px;
+    position: relative;
+  }
+  .advert-container .advert-hitbox img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .whats-new-title-mobile {
+    display: none;
+  }
+  .whats-new-mobile {
+    display: none;
+  }
+  .weekly-deal-title-mobile {
+    display: none;
+  }
+  .weekly-deal-mobile {
+    display: none;
+  }
+  .header-desktop {
+    display: block;
+    color: #F1D7A7;
+  }
+  .mobile-categories-wrapper {
+    display: none;
+  }
+  .btn-categories-title {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .category-buttons-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px 10px;
+    margin-bottom: 40px;
+  }
+  .category-buttons-grid .button-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .category-buttons-grid button {
+    display: block;
+    width: 130px;
+    height: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    background-color: #F1D7A7;
+    cursor: pointer;
+  }
   #profile-page .profile {
     padding: 20px 30px;
   }
@@ -854,6 +945,9 @@ footer #footer-grid .brands {
   }
   .mobile {
     display: none !important;
+  }
+  .product-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   #profile-page .profile {
     padding: 30px 40px;

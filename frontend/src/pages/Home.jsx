@@ -92,37 +92,17 @@ const Home = () => {
       {/* background will be position absolute top 0 an left 0 so the logo-hero can be easily positioned*/}
 
       {/* DESKTOP / WIDER SCREEN ONLY HERO IMAGE  */}
-      <div className="background-desktop">
-        <img src={backgroundDesktop} alt="Gundam-background" />
+      <div className="desktop-advert-wrapper">
+        <div className="desktop-hero-container">
+          <h1 className="header-desktop">COLLECT & CONNECT</h1>
+        </div>
       </div>
-
-      <h1 className="header-desktop">COLLECT & CONNECT</h1>
 
       {/* DESKTOP / WIDER SCREEN ADVERT IMAGES (WHATS NEW) & (WEEKLY DEAL) */}
       {/* can use display flex on advert container if needed and justify spacing "space between" can use margin on wrappers to control spacing better */}
-      <div className="advert-container">
-        <div className="advert-wrapper">
-          <img
-            className="whatsNew-image"
-            src={whatsNewImage}
-            alt="Nia image advert"
-          />
-          {/* center h3 title text at bottom of Nia advert you may have to use a negative margin to push it slightly below  */}
-          {/* using padding and color the background to achieve the same effect as figma. */}
-          <h3 className="whats-new-title">WHATS NEW !</h3>
-        </div>
-        {/* because the plushie image has opacity on right side margin "MAY" need to be used to control spacing */}
-        <div className="advert-wrapper">
-          <img
-            className="weeklyDeal-image"
-            src={weeklyDeal}
-            alt="plushie deal"
-          />
-          {/* center h3 title text at bottom of Plushie advert you may have to use a negative margin to push it slightly below  */}
-          {/* using padding and color the background to achieve the same effect as figma. */}
-          <h3 className="weekly-deal-title">WEEKLY DEAL !</h3>
-        </div>
-      </div>
+
+
+      {/* this is the banner mobile styling */}
 
       <div className="mobile-advert-wrapper">
         <div className="logo-hero-mobile">
@@ -150,9 +130,39 @@ const Home = () => {
         </div>        
       </div>
 
-      {/* Handle category selection */}
-      {/* categories drop down select */}
-      {/* mobile only needs to be hidden at tablet length. */}
+      {/* Desktop Categories */}
+
+      {/* <div className="advert-wrapper">
+        <div className="advert-container">
+          <div className="advert-hitbox">
+            <img
+              className="whatsNew-image"
+              src={whatsNewImage}
+              alt="Nia image advert"
+            />
+          </div>
+
+          {/* center h3 title text at bottom of Nia advert you may have to use a negative margin to push it slightly below  */}
+          {/* using padding and color the background to achieve the same effect as figma. */}
+          {/* <h3 className="whats-new-title">WHATS NEW !</h3>
+        </div> */}
+        {/* because the plushie image has opacity on right side margin "MAY" need to be used to control spacing */}
+        {/* <div className="advert-container">
+          <div className="advert-hitbox">
+            <img
+              className="weeklyDeal-image"
+              src={weeklyDeal}
+              alt="plushie deal"
+            />
+          </div> */}
+
+          {/* center h3 title text at bottom of Plushie advert you may have to use a negative margin to push it slightly below  */}
+          {/* using padding and color the background to achieve the same effect as figma. */}
+          {/* <h3 className="weekly-deal-title">WEEKLY DEAL !</h3>
+        </div>
+      </div> */}
+
+      {/* Mobile Categoies */}
       <div className="mobile-categories-wrapper">
         <div className="categories-container-mobile">
           <select
@@ -180,14 +190,14 @@ const Home = () => {
         <h2 className="btn-categories-title">CATEGORIES</h2>
         {/* this should be display none */}
         <div className="category-buttons-grid">
-          <div className="button-item">
+          {/* <div className="button-item">
             <button
               className={selectedCategory === "" ? "selected" : ""}
               onClick={() => handleCategoryClick("")}
             >
               All
             </button>
-          </div>
+          </div> */}
 
           <div className="button-item">
             <button
