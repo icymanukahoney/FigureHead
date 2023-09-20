@@ -9,9 +9,13 @@ import { Link } from "react-router-dom";
 
 // import images
 import LogoText from "/img/LogoText.png";
-import backgroundDesktop from "/img/gundamWeb.jpg";
-import whatsNewImage from "/img/NiaWeb.png";
-import weeklyDeal from "/img/plushiWeb.png";
+// import backgroundDesktop from "/img/gundamWeb.jpg";
+
+import whatsNewImage from "/img/advert1.png";
+import weeklyDeal from "/img/advert2.png";
+
+// import whatsNewImage from "/img/NiaWeb.png";
+// import weeklyDeal from "/img/plushiWeb.png";
 
 const Home = () => {
   // Define state variables
@@ -132,7 +136,7 @@ const Home = () => {
 
       {/* this is the desktop advertising styles */}
 
-      {/* <div className="advert-wrapper">
+      <div className="advert-wrapper">
         <div className="advert-container">
           <div className="advert-hitbox">
             <img
@@ -140,29 +144,29 @@ const Home = () => {
               src={whatsNewImage}
               alt="Nia image advert"
             />
+
+            <div className="whats-new-title">
+              <h3>WHATS NEW !</h3>
+            </div>
           </div>
 
-          <div className="whats-new-title">
-            <h3>WHATS NEW !</h3>
-          </div>
-
-        </div> */}
+        </div>
         {/* because the plushie image has opacity on right side margin "MAY" need to be used to control spacing */}
-        {/* <div className="advert-container">
+        <div className="advert-container">
           <div className="advert-hitbox">
             <img
               className="weeklyDeal-image"
               src={weeklyDeal}
               alt="plushie deal"
             />
-          </div>
 
-          <div className="weekly-new-title">
-            <h3>WEEKLY DEAL !</h3>
+            <div className="weekly-new-title">
+              <h3>WEEKLY DEAL !</h3>
+            </div>
           </div>
 
         </div>
-      </div> */}
+      </div>
 
       {/* Mobile Categoies */}
       <div className="mobile-categories-wrapper">
@@ -190,14 +194,14 @@ const Home = () => {
         <h2 className="btn-categories-title">CATEGORIES</h2>
         {/* this should be display none */}
         <div className="category-buttons-grid">
-          {/* <div className="button-item">
+          <div className="button-item">
             <button
               className={selectedCategory === "" ? "selected" : ""}
               onClick={() => handleCategoryClick("")}
             >
               All
             </button>
-          </div> */}
+          </div>
 
           <div className="button-item">
             <button
@@ -253,14 +257,14 @@ const Home = () => {
             </button>
           </div>
 
-          <div className="button-item">
+          {/* <div className="button-item">
             <button
               className={selectedCategory === "plushie" ? "selected" : ""}
               onClick={() => handleCategoryClick("plushie")}
             >
               Plushie
             </button>
-          </div>
+          </div> */}
 
           <div className="button-item">
             <button
