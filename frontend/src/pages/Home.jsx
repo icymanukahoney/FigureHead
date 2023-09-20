@@ -175,7 +175,7 @@ const Home = () => {
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            <option value="">Categories</option>
+            <option value="">All Products</option>
             <option value="game">Game</option>
             <option value="movie">Movie</option>
             <option value="tv">Tv</option>
@@ -292,7 +292,7 @@ const Home = () => {
               <h3>{product.title}</h3>
               <div className="product-label-grid">
                 <div>
-                  <p>{product?.categories.join(", ")} </p>
+                  <p className="categories">{product?.categories.join(", ")} </p>
                   <p>${product.price}</p>
                 </div>
                 <div>

@@ -37,7 +37,6 @@ a {
 
 nav {
   z-index: 10;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -242,6 +241,9 @@ footer #footer-grid .brands {
   display: grid;
   grid-template-columns: 1fr 12px;
 }
+.product-grid .product-item .product-label-grid .categories {
+  text-transform: capitalize;
+}
 .product-grid .product-item img {
   width: 100%;
   height: 200px;
@@ -304,9 +306,6 @@ footer #footer-grid .brands {
   padding-left: 10px;
 }
 .login-wrapper .login-container .login ::-moz-placeholder {
-  opacity: 70%;
-}
-.login-wrapper .login-container .login :-ms-input-placeholder {
   opacity: 70%;
 }
 .login-wrapper .login-container .login ::placeholder {
@@ -389,9 +388,6 @@ footer #footer-grid .brands {
   padding-left: 10px;
 }
 .signup-wrapper .signup-container .signup ::-moz-placeholder {
-  opacity: 70%;
-}
-.signup-wrapper .signup-container .signup :-ms-input-placeholder {
   opacity: 70%;
 }
 .signup-wrapper .signup-container .signup ::placeholder {
@@ -518,6 +514,7 @@ footer #footer-grid .brands {
   width: 100%;
   height: 100%;
   position: fixed;
+  z-index: 12;
   top: 0;
   left: 0;
   display: flex;
@@ -725,7 +722,6 @@ footer #footer-grid .brands {
   border-radius: 10px;
 }
 #product-page #mobile-buy-button {
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -946,6 +942,9 @@ footer #footer-grid .brands {
   .add-edit-modals form .category-div {
     display: grid;
     grid-template-columns: 200px 1fr 80px;
+  }
+  .add-edit-modals form .category-div label {
+    text-align: right;
   }
   .add-edit-modals form .input-div {
     display: grid;
