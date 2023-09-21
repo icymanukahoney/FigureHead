@@ -37,6 +37,7 @@ a {
 
 nav {
   z-index: 10;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -308,6 +309,9 @@ footer #footer-grid .brands {
 .login-wrapper .login-container .login ::-moz-placeholder {
   opacity: 70%;
 }
+.login-wrapper .login-container .login :-ms-input-placeholder {
+  opacity: 70%;
+}
 .login-wrapper .login-container .login ::placeholder {
   opacity: 70%;
 }
@@ -388,6 +392,9 @@ footer #footer-grid .brands {
   padding-left: 10px;
 }
 .signup-wrapper .signup-container .signup ::-moz-placeholder {
+  opacity: 70%;
+}
+.signup-wrapper .signup-container .signup :-ms-input-placeholder {
   opacity: 70%;
 }
 .signup-wrapper .signup-container .signup ::placeholder {
@@ -722,6 +729,7 @@ footer #footer-grid .brands {
   border-radius: 10px;
 }
 #product-page #mobile-buy-button {
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -754,6 +762,58 @@ footer #footer-grid .brands {
 }
 #product-page .buy-now-button i {
   margin-right: 10px;
+}
+
+#payment-page {
+  margin-top: 50px;
+  background-color: #25303A;
+  border-top: 5px #F1D7A7 solid;
+  padding-bottom: 220px;
+}
+#payment-page form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#payment-page form .input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+#payment-page form .input-div input, #payment-page form .input-div p, #payment-page form .input-div div {
+  width: 80%;
+}
+#payment-page form .input-div textarea {
+  width: 100%;
+}
+#payment-page form .category-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  padding: 5px;
+  margin: 0 auto;
+}
+#payment-page form .category-flex div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+#payment-page form .form-button {
+  border: none;
+  background-color: #F1D7A7;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #010101 !important;
+  font-weight: 400 !important;
+}
+#payment-page form .form-button.submit {
+  font-weight: 900 !important;
+  border: 2px solid #010101;
+  margin-left: 20px;
 }
 
 @media screen and (min-width: 540px) {
