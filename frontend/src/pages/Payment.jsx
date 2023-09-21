@@ -15,7 +15,7 @@ const Payment = () => {
         // If payment is submitted, show success message and home button
         <div id="payment-success">
           <h2>Success! Payment is complete.</h2>
-          <button onClick={() => window.location.replace("/")}>Home</button>
+          <button classname="payment-home-btn" onClick={() => window.location.replace("/")}>Home</button>
         </div>
       ) : (
         // If payment is not submitted, show the form
@@ -23,7 +23,7 @@ const Payment = () => {
           <h1>Checkout</h1>
 
           {/* Start of the form and we are going to flex this, it will hold all of the form items */}
-          <form id="flex">
+          <form id="payment-flex">
             {/* Name of the card form item */}
             <div className="payment-flex-item name-on-card">
               <label>Cardholder</label>
@@ -37,14 +37,14 @@ const Payment = () => {
             </div>
 
             {/* Expiry date */}
-            <div className="payment-flex-item expiry-date">
-              <label>Expiry date</label>
+            <div className="payment-flex-item">
+              <label className="expiry-date">Expiry date</label>
               <input type="text" />
             </div>
 
             {/* CVV */}
-            <div className="payment-flex-item cvv">
-              <label>CVV</label>
+            <div className="payment-flex-item">
+              <label className="cvv-label">CVV</label>
               <input type="text" />
             </div>
 

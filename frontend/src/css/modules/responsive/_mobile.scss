@@ -870,49 +870,47 @@ footer {
   margin-top: 50px;
   background-color: $main-blue;
   border-top: 5px $main-gold solid;
-  padding-bottom: 220px;
+  // padding-bottom: 440px;
+
+  h1 {
+    margin-top: 30px;
+  }
 
   form {
-    padding: 20px;
-
+    padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 5px;
 
-    .input-div {
+    .payment-flex-item {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 5px;
+      margin-bottom: 50px;
 
-      input, p, div {width: 80%;}
+      label {
+        text-transform: uppercase;
+      }
+
+      input, p, div {
+        width: 100%;
+        height: 30px;
+        border-radius: 15px;
+      }
       textarea {width: 100%;}
     }
 
-    .category-flex {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 5px 8px;
-
-      padding: 5px;
-      margin: 0 auto;
-
-      div {
-        display: flex;
-        align-items: center;
-        gap: 2px;
-      }
-    }
-
-    .form-button {
+    button {
       border: none;
       background-color: $main-gold;
       border-radius: 10px;
-      padding: 10px 15px;
+      padding: 15px 35px;
       color: $black !important;
-      font-weight: $regular-font !important;
+      font-size: $mobile-x-large-size;
+      font-weight: $bold-font !important;
+      margin-bottom: 25px;
+      cursor: pointer;
 
       &.submit {
         font-weight: $black-font !important;
@@ -920,6 +918,24 @@ footer {
         margin-left: 20px;
       }
     }
+  }
+}
+
+#payment-success {
+  padding-top: 300px;
+  padding-bottom: 205px;
+
+  button {
+    margin-top: 30px;
+    border: none;
+    background-color: $main-gold;
+    border-radius: 10px;
+    padding: 15px 35px;
+    color: $black !important;
+    font-size: $mobile-x-large-size;
+    font-weight: $bold-font !important;
+    margin-bottom: 25px;
+    cursor: pointer;
   }
 }
 
