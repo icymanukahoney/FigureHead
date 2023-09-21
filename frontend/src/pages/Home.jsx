@@ -224,7 +224,7 @@ const Home = () => {
           <div className="button-item">
             <button
               className={selectedCategory === "tv" ? "selected" : ""}
-              onClick={() => handleCategoryClick("tv show")}
+              onClick={() => handleCategoryClick("tv")}
             >
               Tv Show
             </button>

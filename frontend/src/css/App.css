@@ -768,52 +768,66 @@ footer #footer-grid .brands {
   margin-top: 50px;
   background-color: #25303A;
   border-top: 5px #F1D7A7 solid;
-  padding-bottom: 220px;
+}
+#payment-page h1 {
+  margin-top: 30px;
 }
 #payment-page form {
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-#payment-page form .input-div {
+#payment-page form .payment-flex-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 5px;
+  margin-bottom: 50px;
 }
-#payment-page form .input-div input, #payment-page form .input-div p, #payment-page form .input-div div {
-  width: 80%;
+#payment-page form .payment-flex-item label {
+  text-transform: uppercase;
 }
-#payment-page form .input-div textarea {
+#payment-page form .payment-flex-item input, #payment-page form .payment-flex-item p, #payment-page form .payment-flex-item div {
+  width: 100%;
+  height: 30px;
+  border-radius: 15px;
+}
+#payment-page form .payment-flex-item textarea {
   width: 100%;
 }
-#payment-page form .category-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 5px 8px;
-  padding: 5px;
-  margin: 0 auto;
-}
-#payment-page form .category-flex div {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-#payment-page form .form-button {
+#payment-page form button {
   border: none;
   background-color: #F1D7A7;
   border-radius: 10px;
-  padding: 10px 15px;
+  padding: 15px 35px;
   color: #010101 !important;
-  font-weight: 400 !important;
+  font-size: 20px;
+  font-weight: 700 !important;
+  margin-bottom: 25px;
+  cursor: pointer;
 }
-#payment-page form .form-button.submit {
+#payment-page form button.submit {
   font-weight: 900 !important;
   border: 2px solid #010101;
   margin-left: 20px;
+}
+
+#payment-success {
+  padding-top: 300px;
+  padding-bottom: 205px;
+}
+#payment-success button {
+  margin-top: 30px;
+  border: none;
+  background-color: #F1D7A7;
+  border-radius: 10px;
+  padding: 15px 35px;
+  color: #010101 !important;
+  font-size: 20px;
+  font-weight: 700 !important;
+  margin-bottom: 25px;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 540px) {
